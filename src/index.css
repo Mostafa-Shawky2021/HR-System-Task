@@ -1,0 +1,32 @@
+:root {
+    --main-color: #f7f8f9;
+    --primary-color: #39a4dc;
+    --primary-color-seconday: #2763ab;
+    --primary-color-active: #2765ac;
+    --secondary-color: #27b40c;
+    --gray-color: #8997a4;
+    --soft-gray-color: #8997a4;
+    --primary-typography: #474747;
+    --secondary-typography: #313030;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-size-default: 15px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-roboto) !important;
+    font-size: var(--font-size-default) !important
+}
+
+ul,
+ol {
+    margin: 0px;
+}
+
+img {
+    vertical-align: middle;
+    object-fit: cover;
+}

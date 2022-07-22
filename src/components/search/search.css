@@ -1,0 +1,8 @@
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    border: none;
+    outline: none;
+}
