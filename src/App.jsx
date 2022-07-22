@@ -9,9 +9,14 @@ import SearchList from './components/search/Search'
 import ListEmployee from './components/list/List'
 import FormModal from './components/formModal/FormModal'
 const App = () => {
-
-
     const [employees, setEmployees] = useState([])
+    const [officeName, setOfficeName] = useState('')
+    const [departmentName, setDepartmentName] = useState('')
+    const [attendanceName, setAttendanceName] = useState('')
+    const [roleName, setRoleName] = useState('')
+    const [positionName, setPositionName] = useState('')
+    const [directManagerName, setDirectManagerName] = useState('')
+    const [toggleFormModal, setToggleFormModal] = useState(false)
     useEffect(() => {
         setEmployees(employeeData)
     }, [])
@@ -19,7 +24,27 @@ const App = () => {
 
     return (
         <div className="wrapper-page">
-            <FormModal />
+            {
+                toggleFormModal && (
+                    <FormModal
+                        setOfficeName={setOfficeName}
+                        officeName={officeName}
+                        departmentName={departmentName}
+                        setDepartmentName={setDepartmentName}
+                        attendanceName={attendanceName}
+                        setAttendanceName={setAttendanceName}
+                        setRoleName={setRoleName}
+                        roleName={roleName}
+                        setPositionName={setPositionName}
+                        positionName={positionName}
+                        setDirectManagerName={setDirectManagerName}
+                        directManagerName={directManagerName}
+                        setToggleFormModal={setToggleFormModal}
+                        toggleFormModal={toggleFormModal}
+                    />
+                )
+            }
+
             <div className="container-fluid">
                 <div className="row g-0">
                     <div className="col-1">
@@ -35,7 +60,7 @@ const App = () => {
                                     icon="fa-solid fa-magnifying-glass"
                                     placeholder="search"
                                     iconStyle="search-list-icon" />
-                                <button className="btn btn-add"><i className="fa-solid fa-plus icon-add"></i> Add new</button>
+                                <button className="btn btn-add" onClick={() => setToggleFormModal(true)}><i className="fa-solid fa-plus icon-add"></i> Add new</button>
                             </div>
                             <ListEmployee employees={employees} />
                         </div>
