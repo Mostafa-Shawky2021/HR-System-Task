@@ -1,14 +1,42 @@
 import React from 'react';
+import './sidebar.css'
 const Sidebar = () => {
-    <aside className="sidebar">
-        <ul className="list-unstyled list d-flex flex-column">
-            <li className="item">
-                <a href="#" className="item-link">
+    return (
+        <aside className="sidebar">
+            <ul className="list-unstyled list ">
+                <li className="item">
+                    <a href="#" className="item-link d-flex flex-column">
+                        <i class="fa-solid fa-gauge icon-sidebar"></i>
+                        <span className="text-sidebar">Dashboard</span>
+                    </a>
+                </li>
+                <li className="item">
+                    <a href="#" className="item-link d-flex flex-column">
+                        <i class="fa-solid fa-gauge icon-sidebar"></i>
+                        <span className="text-sidebar">Workplace</span>
+                    </a>
+                </li>
+                <li className="item">
+                    <a href="#" className="item-link d-flex flex-column">
+                        <i class="fa-solid fa-gauge icon-sidebar"></i>
+                        <span className="text-sidebar">Holidays</span>
+                    </a>
+                </li>
+                <li className="item active">
+                    <a href="#" className="item-link d-flex flex-column">
+                        <i class="fa-solid fa-gauge icon-sidebar"></i>
+                        <span className="text-sidebar">Employees</span>
+                    </a>
+                </li>
+                <li className="item">
+                    <a href="#" className="item-link d-flex flex-column">
+                        <i class="fa-solid fa-gauge icon-sidebar"></i>
+                        <span className="text-sidebar">Inbound Requests</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    )
 
-                </a>
-                <i class="fa-solid fa-gauge"></i>
-            </li>
-        </ul>
-    </aside>
 }
 export default Sidebar;
