@@ -1,0 +1,96 @@
+.card-employee {
+    padding: 11px 5px 18px;
+    box-shadow: 0 3px 15px 0 rgb(0 0 0 / 9%);
+    border: 1px solid #eaeef0;
+    margin-right: 10px;
+    margin-bottom: 40px;
+}
+
+.card-employee .user-control {
+    border-right: 1px solid #dddddd;
+    display: flex;
+    flex-direction: column;
+    margin-right: 14px;
+}
+
+.card-employee .user-control .employee-avatar {
+    width: 58px;
+    height: 58px;
+}
+
+.card-employee .user-control .control {
+    gap: 10px;
+    margin-top: 12px
+}
+
+
+.card-employee .user-control .control .control-icon {
+    border: none;
+    background-color: transparent;
+    color: var(--soft-gray-color);
+
+}
+
+.card-employee .employee-details {
+    width: 100%;
+}
+
+
+.card-employee .employee-details .employee-name {
+    font-size: 19px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+}
+
+.card-employee .employee-details .job-title {
+    color: var(--secondary-typography);
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.card-employee .employee-details .department {
+    color: #5c6974;
+}
+
+.card-employee .employee-details .user-status {
+    justify-content: space-between;
+}
+
+.card-employee .employee-details .user-status .status {
+    padding: 3px 13px;
+    border-radius: 2px;
+}
+
+.card-employee .employee-details .user-status .status.present {
+    color: #27b40c;
+    background: #eaeef0;
+}
+
+.card-employee .employee-details .user-status .status.absent {
+    background: #ff6a6a52;
+    color: #f00;
+}
+
+.card-employee .employee-details .user-status .status.leave {
+    background-color: #d9d9d9;
+    color: var(--soft-gray-color)
+}
+
+
+.card-employee .employee-details .user-status .icon-contact {
+    display: flex;
+    gap: 11px;
+}
+
+.card-employee .employee-details .user-status .icon-contact .icon {
+    background: #eaeef0;
+    text-align: center;
+    width: 29px;
+    border-radius: 50%;
+    line-height: 28px;
+    height: 29px;
+    cursor: pointer;
+
+}

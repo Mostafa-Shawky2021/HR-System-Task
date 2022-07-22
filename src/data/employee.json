@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": 0,
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": 1,
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": 3,
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": 0,
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
+    }
+]
