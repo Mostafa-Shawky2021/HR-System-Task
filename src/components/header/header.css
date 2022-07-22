@@ -1,0 +1,78 @@
+.header {
+    background-color: #fff;
+    padding-top: 10px;
+    flex-grow: 1;
+    height: 79px;
+    padding-right: 80px;
+
+}
+
+.header .header-content {
+    gap: 36px;
+
+}
+
+.header .header-content .date {
+    margin: 0px;
+    color: var(--primary-typography);
+    font-weight: 500;
+}
+
+.header .header-content .btn-signin {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 2px 24px;
+    font-size: 14px;
+}
+
+.header .header-content .notification-wrapper {
+    position: relative;
+}
+
+
+.header .header-content .notification-wrapper .notification-count {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+    line-height: 17px;
+}
+
+.header .header-content .notification-wrapper .icon-notification {
+    font-size: 20px;
+    color: var(--gray-color);
+}
+
+.header .header-content .user-info-wrapper {
+    color: var(--soft-gray-color);
+    position: relative;
+    cursor: pointer;
+}
+
+.header .header-content .user-info-wrapper .avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.header .header-content .user-info-wrapper .user-name {
+    text-transform: capitalize;
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 17px;
+
+}
+
+.header .header-content .user-info-wrapper .icon-chevron-down {
+    position: absolute;
+    top: 50%;
+    right: -21px;
+    transform: translateY(-50%);
+    font-size: 13px;
+}

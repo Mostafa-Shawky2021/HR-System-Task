@@ -1,5 +1,14 @@
 :root {
-    --green: red;
+    --main-color: #f7f8f9;
+    --primary-color: #39a4dc;
+    --primary-color-seconday: #2763ab;
+    --secondary-color: #27b40c;
+    --gray-color: #8997a4;
+    --soft-gray-color: #8997a4;
+    --primary-typography: #474747;
+    --secondary-typography: #313030;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-size-default: 15px;
 }
 
 * {
@@ -7,11 +16,26 @@
 }
 
 body {
-    padding: 0px;
-    margin: 0px;
+    font-family: var(--font-roboto) !important;
+    font-size: var(--font-size-default) !important
 }
 
 ul,
 ol {
     margin: 0px;
+}
+
+img {
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+.wrapper-page {
+    background-color: var(--main-color);
+    height: 100vh;
+}
+
+.wrapper-page .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
 }
