@@ -14,8 +14,8 @@
 }
 
 .card-employee .user-control .employee-avatar {
-    width: 58px;
-    height: 58px;
+    width: 71px;
+    height: 71px;
 }
 
 .card-employee .user-control .control {
@@ -52,6 +52,7 @@
 
 .card-employee .employee-details .department {
     color: #5c6974;
+    margin-bottom: 5px;
 }
 
 .card-employee .employee-details .user-status {

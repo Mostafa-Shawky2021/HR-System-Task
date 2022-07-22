@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './formModal.css'
 import DropDownOption from "../dropdown/Dropdown"
-const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentName, setAttendanceName, attendanceName, roleName, setRoleName, positionName, setPositionName, directManagerName, setDirectManagerName, setToggleFormModal, toggleFormModal }) => {
+const FormModal = ({ setEmployeeName, setStartDate, setEmail, setOfficeName, officeName, setDepartmentName, departmentName, setAttendanceName, attendanceName, roleName, setRoleName, positionName, setPositionName, directManagerName, setDirectManagerName, setToggleFormModal, toggleFormModal, onSubmitData, employeeNameErr, startDateErr, emailErr, departmentErr, positionErr }) => {
     const [officeNameToggle, setOfficeNameToggle] = useState(false)
     const [departmentNameToggle, setDepartmentNameToggle] = useState(false)
     const [attendanceNameToggle, setAttendanceNameToggle] = useState(false)
@@ -42,31 +42,32 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
                             <div className="img"></div>
                         </div>
                         <div className="col-8 row">
-                            <div className="mb-2 col-6">
-
+                            <div className="mb-2 col-6 wrap">
+                                <span className="error">{employeeNameErr}</span>
                                 <label className="form-label" htmlFor="name">Name</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="name" />
+                                    <input className="form-control" id="name" onChange={(e) => setEmployeeName(e.target.value)} />
                                 </div>
                             </div>
-                            <div className="mb-2 col-6">
-                                <label className="form-label" htmlFor="name">Start Date</label>
+                            <div className="mb-2 col-6 wrap">
+                                <span className="error">{startDateErr}</span>
+                                <label className="form-label" htmlFor="date">Start Date</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="name" type="date" />
+                                    <input className="form-control" id="date" type="date" onChange={(e) => setStartDate(e.target.value)} />
                                 </div>
                             </div>
 
-                            <div className="mb-2 col-6">
-
-                                <label className="form-label" htmlFor="name">Phone</label>
+                            <div className="mb-2 col-6 wrap">
+                                {/* <span className="error">hello</span> */}
+                                <label className="form-label" htmlFor="phone">Phone</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="name" />
+                                    <input className="form-control" id="phone" />
                                 </div>
                             </div>
-                            <div className="mb-2 col-6">
-                                <label className="form-label" htmlFor="name">Email</label>
+                            <div className="mb-2 col-6 wrap">
+                                <label className="form-label" htmlFor="email">Email</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="name" type="date" />
+                                    <input className="form-control" id="email" onChange={((e) => setEmail(e.target.value))} />
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,8 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
                     <p className="office-info-title">Office Info</p>
 
                     {/* officename */}
-                    <div className="mb-3">
+                    <div className="mb-3 wrap">
+                        {/* <span className="error">{officeError}</span> */}
                         <label className="form-label">Office</label>
                         <div className="select-dropdown-wrapper" onClick={() => setOfficeNameToggle(!officeNameToggle)}>
                             <span>{`${officeName ? officeName : 'Name'}`}</span>
@@ -89,9 +91,10 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
                     {/* end officename */}
 
                     {/* department,attendance */}
-                    <div className="mb-3">
+                    <div className="mb-3 ">
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-6 wrap">
+                                <span className="error">{departmentErr}</span>
                                 <label className="form-label">Department</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setDepartmentNameToggle(!departmentNameToggle)}>
                                     <span>{`${departmentName ? departmentName : 'Select'}`}</span>
@@ -99,7 +102,8 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
                                     {departmentNameToggle && <DropDownOption requiredDropdown="department" getSelectedOption={getSelectedOption} options={departmentOption} />}
                                 </div>
                             </div>
-                            <div className="col-6">
+                            <div className="col-6 wrap">
+                                {/* <span className="error">hello</span> */}
                                 <label className="form-label">Office</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setAttendanceNameToggle(!attendanceNameToggle)}>
                                     <span>{`${attendanceName ? attendanceName : 'Select'}`}</span>
@@ -114,7 +118,8 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
                     {/* role, position */}
                     <div className="mb-3">
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-6 wrap">
+                                {/* <span className="error">hello</span> */}
                                 <label className="form-label">Role</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setRoleNameToggle(!roleNameToggle)}>
                                     <span>{`${roleName ? roleName : 'Select'}`}</span>
@@ -122,7 +127,8 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
                                     {roleNameToggle && <DropDownOption requiredDropdown="role" getSelectedOption={getSelectedOption} options={roleOption} />}
                                 </div>
                             </div>
-                            <div className="col-6">
+                            <div className="col-6 wrap">
+                                <span className="error">{positionErr}s</span>
                                 <label className="form-label">Position</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setPositionToggle(!positionToggle)}>
                                     <span>{`${positionName ? positionName : 'Select'}`}</span>
@@ -135,7 +141,8 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
 
                     <div className="mb-3">
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-6 wrap">
+                                {/* <span className="error">hello</span> */}
                                 <label className="form-label">Direct Manger</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setDirectManagerToggle(!directManagerToggle)}>
                                     <span>{`${directManagerName ? directManagerName : 'Select'}`}</span>
@@ -148,7 +155,7 @@ const FormModal = ({ setOfficeName, officeName, setDepartmentName, departmentNam
 
                     <div className="btn-wrapper">
                         <button className="btn btn-danger" onClick={() => setToggleFormModal(!toggleFormModal)}>Cancel</button>
-                        <button className="btn btn-primary">Save</button>
+                        <button className="btn btn-primary" onClick={(e) => onSubmitData(e)}>Save</button>
                     </div>
                 </div>
 

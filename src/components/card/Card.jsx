@@ -11,10 +11,11 @@ const Card = (
         officeCopiedManager,
         officeJoiningDate,
         officeManager }) => {
+    console.log(attendance)
     let attendanceStauts = {}
-    if (attendance === 0) {
+    if (attendance === "Present") {
         attendanceStauts = { className: 'present', label: 'Present' }
-    } else if (attendance === 1) {
+    } else if (attendance === "Absent") {
         attendanceStauts = { className: 'absent', label: 'Absent' }
     } else {
         attendanceStauts = { className: 'leave', label: 'On Leave' }

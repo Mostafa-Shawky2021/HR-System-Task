@@ -4,7 +4,7 @@
         "name": "Sara Khaled Ahmed",
         "position": "HR Head",
         "department": "Business Development",
-        "attendance": 0,
+        "attendance": "Absent",
         "office": {
             "name": "Arabie localizer",
             "role": "Employee",
@@ -18,7 +18,7 @@
         "name": "Sara Khaled Ahmed",
         "position": "HR Head",
         "department": "Business Development",
-        "attendance": 1,
+        "attendance": "Present",
         "office": {
             "name": "Arabie localizer",
             "role": "Employee",
@@ -32,7 +32,7 @@
         "name": "Sara Khaled Ahmed",
         "position": "HR Head",
         "department": "Business Development",
-        "attendance": 3,
+        "attendance": "On Leave",
         "office": {
             "name": "Arabie localizer",
             "role": "Employee",
@@ -46,7 +46,7 @@
         "name": "Sara Khaled Ahmed",
         "position": "HR Head",
         "department": "Business Development",
-        "attendance": 0,
+        "attendance": "Present",
         "office": {
             "name": "Arabie localizer",
             "role": "Employee",

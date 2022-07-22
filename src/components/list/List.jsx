@@ -8,9 +8,9 @@ const List = ({ employees }) => {
             <div className="row g-0">
                 {
                     employees.length ? (
-                        employees.map((employee) => (
+                        employees.map((employee, index) => (
 
-                            <div className="col-4" key={employee.id}>
+                            <div className="col-4" key={index}>
                                 <EmployeeCard
                                     name={employee.name}
                                     position={employee.position}

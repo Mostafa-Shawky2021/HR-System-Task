@@ -24,6 +24,13 @@
     margin: 0px;
 }
 
+.custom-modal .form-modal .error {
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    color: #f00;
+}
+
 .custom-modal .form-modal .emp-info .img {
     height: 155px;
     border: 1px dashed #ccc;
@@ -42,6 +49,10 @@
 .custom-modal .form-modal .emp-info .person-info-title {
     color: #23aaeb;
     font-weight: bold;
+}
+
+.custom-modal .form-modal .wrap {
+    position: relative;
 }
 
 .custom-modal .form-modal .office-info {
