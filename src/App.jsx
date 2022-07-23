@@ -10,24 +10,22 @@ import ListEmployee from './components/list/List'
 import FormModal from './components/formModal/FormModal'
 const App = () => {
     const [employees, setEmployees] = useState([])
-    const [employeeName, setEmployeeName] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [email, setEmail] = useState('');
-    const [officeName, setOfficeName] = useState('')
-    const [departmentName, setDepartmentName] = useState('')
-    const [attendanceName, setAttendanceName] = useState('')
-    const [roleName, setRoleName] = useState('')
-    const [positionName, setPositionName] = useState('')
-    const [directManagerName, setDirectManagerName] = useState('')
+
+    // Form data
+    const [formData, setFormData] = useState({
+        employeeName: { value: '', errMsg: '', validate: false },
+        startDate: { value: '', errMsg: '', validate: false },
+        email: { value: '', errMsg: '', validate: false },
+        officeName: { value: '', errMsg: '', validate: true },
+        departmentName: { value: '', errMsg: '', validate: false },
+        attendanceName: { value: '', errMsg: '', validate: true },
+        roleName: { value: '', errMsg: '', validate: true },
+        positionName: { value: '', errMsg: '', validate: false },
+        directManagerName: { value: '', errMsg: '', validate: true },
+
+    })
+
     const [toggleFormModal, setToggleFormModal] = useState(true)
-
-    // errorMessage
-    const [employeeNameErr, setEmployeeNameErr] = useState('')
-    const [startDateErr, setStartDateErr] = useState('')
-    const [emailErr, setEmailErr] = useState('')
-    const [departmentErr, setDepartmentErr] = useState('')
-    const [positionErr, setPositionErr] = useState('')
-
     let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     useEffect(() => {
@@ -38,84 +36,114 @@ const App = () => {
 
         event.preventDefault();
 
-        if (employeeName.trim().length === 0) {
-            setEmployeeNameErr('Sorry Employee name is required')
-        }
-
-        if (startDate.trim().length === 0) {
-            setStartDateErr('Sorry date is required')
-        }
-
-        // if (!emailRegex.test(email)) {
-        //     setEmailErr('sorry Email is required and must be valid')
-        // }
-        if (departmentName.trim().length === 0) {
-            setDepartmentErr('Sorry deprtment is required')
-        }
-        if (positionName.trim().length === 0) {
-            setPositionErr('Sorry position is required')
-        }
-
-        if (employeeNameErr || startDateErr || emailErr || departmentErr || positionErr) {
-            return
+        // validation Form
+        if (formData.employeeName.value.trim().length === 0) {
+            setFormData((prevState) => {
+                prevState.employeeName.errMsg = 'employee name is required'
+                prevState.employeeName.validate = false;
+                return prevState
+            })
         } else {
-            setEmployeeNameErr('')
-            setStartDateErr('')
-            setDepartmentErr('')
-            setPositionErr('')
+            setFormData((prevState) => {
+                prevState.employeeName.errMsg = ''
+                prevState.employeeName.validate = true;
+                return prevState
+            })
+        }
 
+        if (formData.startDate.value.trim().length === 0) {
+            setFormData((prevState) => {
+                prevState.startDate.errMsg = 'date field is required'
+                prevState.startDate.validate = false;
+                return prevState
+            })
+        } else {
+            setFormData((prevState) => {
+                prevState.startDate.errMsg = ''
+                prevState.startDate.validate = true;
+                return prevState
+            })
+        }
+        if (formData.email.value.search(emailRegex) === -1) {
+            setFormData((prevState) => {
+                prevState.email.errMsg = 'Email must be valid'
+                prevState.email.validate = false;
+                return prevState
+            })
+        } else {
+            setFormData((prevState) => {
+                prevState.email.errMsg = ''
+                prevState.email.validate = true;
+                return prevState
+            })
+        }
+        if (formData.departmentName.value.trim().length === 0) {
+            setFormData((prevState) => {
+                prevState.departmentName.errMsg = 'Department is required'
+                prevState.departmentName.validate = false;
+                return prevState
+            })
+        } else {
+            setFormData((prevState) => {
+                prevState.departmentName.errMsg = ''
+                prevState.departmentName.validate = true;
+                return prevState
+            })
+        }
+        if (formData.positionName.value.trim().length === 0) {
+            setFormData((prevState) => {
+                prevState.positionName.errMsg = 'Position is required'
+                prevState.positionName.validate = false;
+                return prevState
+            })
+        } else {
+            setFormData((prevState) => {
+                prevState.positionName.errMsg = ''
+                prevState.positionName.validate = true;
+                return prevState
+            })
         }
 
 
+        let formStatusIterate = Object.entries(formData).some(([key, value]) => {
+            // false meaning there is error in inputs   
+            return value.validate === false
+        })
 
-        let data = {
-            id: employees.length,
-            name: employeeName,
-            position: positionName,
-            department: departmentName,
-            attendance: attendanceName,
-            office: {
-                name: officeName,
-                role: roleName,
-                copiedManager: 'Mohamed Tarek',
-                joiningDate: startDateErr,
-                manager: directManagerName
+        if (!formStatusIterate) {
+            // no problem with error form
+            let employee = {
+                id: employees.length,
+                name: formData.employeeName.value,
+                position: formData.positionName.value,
+                department: formData.departmentName.value,
+                attendance: formData.attendanceName.value,
+                office: {
+                    name: formData.officeName.value,
+                    role: formData.roleName.value,
+                    copiedManager: 'Mohamed Tarek',
+                    joiningDate: formData.startDate.value,
+                    manager: formData.directManagerName.value
+                }
             }
+            setEmployees((prevState) => [...prevState, employee])
         }
-        setEmployees((prevState) => [...prevState, data])
-
-        console.log(employees)
     }
-
     return (
         <div className="wrapper-page">
             {
                 toggleFormModal && (
                     <FormModal
-                        setEmployeeName={setEmployeeName}
-                        setStartDate={setStartDate}
-                        setEmail={setEmail}
-                        setOfficeName={setOfficeName}
-                        officeName={officeName}
-                        departmentName={departmentName}
-                        setDepartmentName={setDepartmentName}
-                        attendanceName={attendanceName}
-                        setAttendanceName={setAttendanceName}
-                        setRoleName={setRoleName}
-                        roleName={roleName}
-                        setPositionName={setPositionName}
-                        positionName={positionName}
-                        setDirectManagerName={setDirectManagerName}
-                        directManagerName={directManagerName}
+                        setFormData={setFormData}
+                        formData={formData}
                         setToggleFormModal={setToggleFormModal}
                         toggleFormModal={toggleFormModal}
                         onSubmitData={onSubmitData}
-                        employeeNameErr={employeeNameErr}
-                        startDateErr={startDateErr}
-                        emailErr={emailErr}
-                        departmentErr={departmentErr}
-                        positionErr={positionErr}
-
+                        employeeNameErr={formData.employeeName.errMsg}
+                        startDateErr={formData.startDate.errMsg}
+                        emailErr={formData.email.errMsg}
+                        departmentErr={formData.departmentName.errMsg}
+                        positionErr={formData.departmentName.errMsg}
                     />
                 )
             }

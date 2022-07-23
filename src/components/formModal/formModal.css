@@ -22,6 +22,12 @@
 
 .custom-modal .form-modal .form-label {
     margin: 0px;
+    font-size: 14px;
+}
+
+.custom-modal .form-modal .form-control {
+    color: #8f9da9;
+    font-size: 14px;
 }
 
 .custom-modal .form-modal .error {
@@ -66,8 +72,6 @@
     margin-top: 10px;
 }
 
-
-
 .custom-modal .form-modal .office-info .select-dropdown-wrapper {
     position: relative;
     border-radius: 5px;
@@ -76,6 +80,8 @@
     cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
+    color: #8f9da9;
+    font-size: 14px;
 }
 
 .custom-modal .form-modal .office-info .select-dropdown-wrapper .icon-chevron {

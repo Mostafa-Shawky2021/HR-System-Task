@@ -3,23 +3,25 @@
     background-color: #fff;
     border: 1px solid #ccc;
     width: 100%;
-    top: 44px;
+    top: 38px;
     left: 0px;
-    padding: 10px;
     border-radius: 5px;
-    padding-bottom: 0px;
     z-index: 2;
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
 }
 
 .option-list .option-item {
-    padding-bottom: 7px;
+    padding: 7px 10px;
     margin-bottom: 5px;
     cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
 }
 
-.option-list .option-item:not(:last-child) {
-    border-bottom: 1px solid #ccc;
+.option-list .option-item:hover {
+    background-color: #eee;
 }
+
+/* .option-list .option-item:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+} */
