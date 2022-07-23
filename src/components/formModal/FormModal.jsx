@@ -10,7 +10,7 @@ const FormModal = ({
 
 
 }) => {
-    console.log(toggleFormModal)
+
     // toggle Dropdown modal
     const [officeNameToggle, setOfficeNameToggle] = useState(false)
     const [departmentNameToggle, setDepartmentNameToggle] = useState(false)
@@ -27,13 +27,11 @@ const FormModal = ({
     const [positionOption, setPositionOption] = useState(['Project Manager', 'HR'])
     const [directManagerOption, setDirectManagerOption] = useState(["Nabil Mahmoud", "Ahmed Mohamed"])
 
-    const formModal = useRef(null)
     useEffect(() => {
         const onKeyPress = (e) => {
-            console.log(e.keyCode)
+
             if (e.keyCode === 27 && toggleFormModal) {
                 setToggleFormModal(false)
-
             }
         }
         document.body.addEventListener('keyup', onKeyPress)

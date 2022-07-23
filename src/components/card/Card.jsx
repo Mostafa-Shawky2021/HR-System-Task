@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import SubMenu from '../submenu/SubMenu';
 import "./card.css"
 const Card = (
     {
@@ -14,7 +15,8 @@ const Card = (
         officeManager,
         onDeleteEmployee
     }) => {
-
+    const [subMenuToggle, setSubMenuToggle] = useState(false)
+    const subMenuWrapper = useRef(null)
     let attendanceStauts = {}
     if (attendance === "Present") {
         attendanceStauts = { className: 'present', label: 'Present' }
@@ -24,11 +26,11 @@ const Card = (
         attendanceStauts = { className: 'leave', label: 'On Leave' }
     }
 
+
     return (
         <>
 
             <div className="card-employee d-flex">
-
                 <div className="user-control">
                     <div className="text-center">
                         <img src="/assets/header/useravatar.png" alt="employee-avatar" className="employee-avatar img-fluid" />
@@ -36,7 +38,7 @@ const Card = (
                     <div className="control d-flex align-items-center">
                         <button className='control-icon'><i className="fa-solid fa-pen"></i></button>
                         <button className='control-icon'><i className="fa-solid fa-pause"></i></button>
-                        <button className='control-icon'><i className="fa-solid fa-trash-can" onClick={() => onDeleteEmployee(id)}></i></button>
+                        <button className='control-icon icon-trash'><i className="fa-solid fa-trash-can" onClick={() => onDeleteEmployee(id)}></i></button>
                     </div>
                 </div>
 
@@ -49,7 +51,12 @@ const Card = (
                         <div className="icon-contact">
                             <i className="fa-solid fa-envelope icon"></i>
                             <i className="fa-solid fa-phone icon"></i>
-                            <i className="fa-solid fa-ellipsis-vertical icon"></i>
+                            <div className="submenu-parent" ref={subMenuWrapper}>
+                                <i className="fa-solid fa-ellipsis-vertical icon" onClick={() => setSubMenuToggle(!subMenuToggle)}></i>
+                                {/* submenu */}
+                                <SubMenu subMenuToggle={subMenuToggle} setSubMenuToggle={setSubMenuToggle} subMenuElementRef={subMenuWrapper} />
+                            </div>
+
                         </div>
                     </div>
                 </div>

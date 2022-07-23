@@ -21,7 +21,3 @@
 .option-list .option-item:hover {
     background-color: #eee;
 }
-
-/* .option-list .option-item:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-} */

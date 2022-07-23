@@ -45,7 +45,17 @@
     border: none;
     background-color: transparent;
     color: var(--soft-gray-color);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
 
+.card-employee .user-control .control .control-icon.icon-trash:hover {
+    color: #f00;
+}
+
+.card-employee .user-control .control .control-icon:hover {
+    color: var(--primary-color);
 }
 
 .card-employee .employee-details {
@@ -74,11 +84,24 @@
 
 .card-employee .employee-details .user-status {
     justify-content: space-between;
+    position: relative;
+}
+
+.card-employee .employee-details .user-status .submenu .submenu-parent {
+    position: relative;
+    z-index: 9999;
+}
+
+.card-employee .employee-details .user-status .submenu .submenu-parent .icon {
+    width: 100%;
+    height: 100%;
+
 }
 
 .card-employee .employee-details .user-status .status {
     padding: 3px 13px;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .card-employee .employee-details .user-status .status.present {
@@ -110,5 +133,12 @@
     line-height: 28px;
     height: 29px;
     cursor: pointer;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
 
+.card-employee .employee-details .user-status .icon-contact .icon:hover {
+    background-color: var(--primary-color);
+    color: #fff;
 }

@@ -14,7 +14,7 @@ const App = () => {
     const [employees, setEmployees] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [formStatus, setFormStatus] = useState(false)
-    const [toggleFormModal, setToggleFormModal] = useState(true)
+    const [toggleFormModal, setToggleFormModal] = useState(false)
 
     // Form data 
     const [formData, setFormData] = useState({
