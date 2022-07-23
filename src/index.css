@@ -18,7 +18,8 @@
 
 body {
     font-family: var(--font-roboto) !important;
-    font-size: var(--font-size-default) !important
+    font-size: var(--font-size-default) !important;
+    height: 50000px;
 }
 
 ul,
@@ -29,4 +30,8 @@ ol {
 img {
     vertical-align: middle;
     object-fit: cover;
+}
+
+.wrap {
+    position: relative;
 }

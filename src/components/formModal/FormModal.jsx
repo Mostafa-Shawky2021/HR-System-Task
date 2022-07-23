@@ -76,10 +76,10 @@ const FormModal = ({ setEmployeeName, setStartDate, setEmail, setOfficeName, off
                 </div>
                 {/* office info */}
                 <div className="office-info">
-                    <p className="office-info-title">Office Info</p>
+                    <p className="person-info-title">Office Info</p>
 
                     {/* officename */}
-                    <div className="mb-3 wrap">
+                    <div className="mb-2 wrap">
                         {/* <span className="error">{officeError}</span> */}
                         <label className="form-label">Office</label>
                         <div className="select-dropdown-wrapper" onClick={() => setOfficeNameToggle(!officeNameToggle)}>
@@ -91,7 +91,7 @@ const FormModal = ({ setEmployeeName, setStartDate, setEmail, setOfficeName, off
                     {/* end officename */}
 
                     {/* department,attendance */}
-                    <div className="mb-3 ">
+                    <div className="mb-2 ">
                         <div className="row">
                             <div className="col-6 wrap">
                                 <span className="error">{departmentErr}</span>
@@ -116,7 +116,7 @@ const FormModal = ({ setEmployeeName, setStartDate, setEmail, setOfficeName, off
                     {/* end department, attendance */}
 
                     {/* role, position */}
-                    <div className="mb-3">
+                    <div className="mb-2">
                         <div className="row">
                             <div className="col-6 wrap">
                                 {/* <span className="error">hello</span> */}
@@ -138,8 +138,10 @@ const FormModal = ({ setEmployeeName, setStartDate, setEmail, setOfficeName, off
                             </div>
                         </div>
                     </div>
+                    {/*end role, position */}
 
-                    <div className="mb-3">
+                    {/* DirectManager */}
+                    <div className="mb-2">
                         <div className="row">
                             <div className="col-6 wrap">
                                 {/* <span className="error">hello</span> */}
@@ -152,10 +154,20 @@ const FormModal = ({ setEmployeeName, setStartDate, setEmail, setOfficeName, off
                             </div>
                         </div>
                     </div>
+                    {/* End Direcct Manager */}
+
+                    {/* Work from home */}
+                    <div className="work-from-home">
+                        <p className="person-info-title">Work From Home</p>
+                        <div className="allow-work-wrapper">
+                            <input type="checkbox" name="workfromhome" id="workformhome" />
+                            <label className="form-label ms-2" htmlFor="workformhome">Allow Employees To Work From Home</label>
+                        </div>
+                    </div>
 
                     <div className="btn-wrapper">
-                        <button className="btn btn-danger" onClick={() => setToggleFormModal(!toggleFormModal)}>Cancel</button>
-                        <button className="btn btn-primary" onClick={(e) => onSubmitData(e)}>Save</button>
+                        <button className="btn btn-close-form " onClick={() => setToggleFormModal(!toggleFormModal)}>Cancel</button>
+                        <button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Save</button>
                     </div>
                 </div>
 

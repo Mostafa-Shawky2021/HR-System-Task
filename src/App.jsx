@@ -85,9 +85,6 @@ const App = () => {
         setEmployees((prevState) => [...prevState, data])
 
         console.log(employees)
-
-
-
     }
 
     return (

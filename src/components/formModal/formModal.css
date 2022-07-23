@@ -17,10 +17,10 @@
     min-height: 500px;
     border-radius: 4px;
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
-    padding: 5px 20px;
+    padding: 8px 20px;
 }
 
-.custom-modal .form-modal .label-form {
+.custom-modal .form-modal .form-label {
     margin: 0px;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .custom-modal .form-modal .emp-info .img {
-    height: 155px;
+    height: 128px;
     border: 1px dashed #ccc;
 }
 
@@ -40,36 +40,41 @@
     color: #23aaeb;
     text-transform: uppercase;
     font-weight: 500;
-    font-size: 23px;
+    font-size: 20px;
     padding-bottom: 9px;
     border-bottom: 1px solid #23aaeb;
 
 }
 
-.custom-modal .form-modal .emp-info .person-info-title {
+.custom-modal .form-modal .person-info-title {
     color: #23aaeb;
     font-weight: bold;
+    position: relative;
 }
 
-.custom-modal .form-modal .wrap {
-    position: relative;
+.custom-modal .form-modal .person-info-title::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 25px;
+    width: 43px;
+    height: 3px;
+    background-color: rgba(40, 104, 174, 0.43);
 }
 
 .custom-modal .form-modal .office-info {
     margin-top: 10px;
 }
 
-.custom-modal .form-modal .office-info .office-info-title {
-    color: #23aaeb;
-    font-weight: bold;
-}
+
 
 .custom-modal .form-modal .office-info .select-dropdown-wrapper {
     position: relative;
     border-radius: 5px;
-    border: 1px solid rgba(170, 170, 170, 0.84);
-    padding: 8px;
+    border: 1px solid rgb(170 170 170 / 59%);
+    padding: 5px 9px;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -80,8 +85,51 @@
     transform: translateY(-50%);
 }
 
+.custom-modal .form-modal .work-from-home .form-label {
+    color: var(--primary-typography);
+    font-weight: 500;
+    user-select: none;
+    cursor: pointer;
+}
+
 .custom-modal .form-modal .btn-wrapper {
     display: flex;
     justify-content: flex-end;
     gap: 15px;
+}
+
+.custom-modal .form-modal .btn-wrapper .btn {
+
+    background: red;
+    color: #ffff;
+    width: 94px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 14px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+
+.custom-modal .form-modal .btn-wrapper .btn.btn-save {
+    background-color: #23aaeb;
+
+}
+
+.custom-modal .form-modal .btn-wrapper .btn.btn-close-form {
+    background-color: #ff6a6a;
+}
+
+.custom-modal .form-modal .btn-wrapper .btn.btn-close-form:hover,
+.custom-modal .form-modal .btn-wrapper .btn.btn-close-form:focus {
+    background-color: #e36262;
+    box-shadow: unset;
+}
+
+.custom-modal .form-modal .btn-wrapper .btn.btn-save:hover,
+.custom-modal .form-modal .btn-wrapper .btn.btn-save:focus {
+    background-color: #2194cb;
+    box-shadow: unset;
 }
