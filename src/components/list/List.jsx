@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import EmployeeCard from '../card/Card'
 import './list.css'
-const List = ({ employees, searchValue }) => {
+const List = ({ employees, searchValue, popupDeleteToggle, setPopupDeleteToggle }) => {
 
     const [filterData, setFilterData] = useState([])
 
@@ -31,6 +31,8 @@ const List = ({ employees, searchValue }) => {
                                     officeCopiedManager={employee.office.copiedManager}
                                     officeJoiningDate={employee.office.joiningDate}
                                     officeManager={employee.office.manager}
+                                    popupDeleteToggle={popupDeleteToggle}
+                                    setPopupDeleteToggle={setPopupDeleteToggle}
 
                                 />
 

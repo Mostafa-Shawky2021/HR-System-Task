@@ -6,6 +6,23 @@
     margin-bottom: 40px;
 }
 
+.card-employee .popup-delete-content {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    padding: 15px 10px;
+}
+
+.card-employee .popup-delete-content .btn {
+    width: 81px;
+    margin-left: 13px;
+    padding: 1px;
+    cursor: pointer;
+}
+
 .card-employee .user-control {
     border-right: 1px solid #dddddd;
     display: flex;

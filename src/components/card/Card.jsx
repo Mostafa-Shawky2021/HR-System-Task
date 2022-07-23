@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PopupDeleteEmployee from '../popup/Popup';
 import "./card.css"
 const Card = (
     {
@@ -10,8 +11,17 @@ const Card = (
         officeRole,
         officeCopiedManager,
         officeJoiningDate,
-        officeManager }) => {
-    console.log(attendance)
+        officeManager,
+        popupDeleteToggle,
+        setPopupDeleteToggle }) => {
+
+    const [popupToggle, setPopupToggle] = useState(false)
+
+    const onDelete = () => {
+
+        setPopupDeleteToggle(true)
+    }
+
     let attendanceStauts = {}
     if (attendance === "Present") {
         attendanceStauts = { className: 'present', label: 'Present' }
@@ -23,7 +33,20 @@ const Card = (
 
     return (
         <>
+
             <div className="card-employee d-flex">
+                {/* show only if user delete employee */}
+                {
+                    popupDeleteToggle && (
+                        <PopupDeleteEmployee>
+                            <div className="popup-delete-content">
+                                <p className="description">Are You sure you want to delete this employee? </p>
+                                <button className="btn btn-danger">yes</button>
+                                <button className="btn btn-primary">no</button>
+                            </div>
+                        </PopupDeleteEmployee>)
+
+                }
                 <div className="user-control">
                     <div className="text-center">
                         <img src="/assets/header/useravatar.png" alt="employee-avatar" className="employee-avatar img-fluid" />
@@ -31,7 +54,7 @@ const Card = (
                     <div className="control d-flex align-items-center">
                         <button className='control-icon'><i className="fa-solid fa-pen"></i></button>
                         <button className='control-icon'><i className="fa-solid fa-pause"></i></button>
-                        <button className='control-icon'><i className="fa-solid fa-trash-can"></i></button>
+                        <button className='control-icon'><i className="fa-solid fa-trash-can" onClick={onDelete}></i></button>
                     </div>
                 </div>
 

@@ -13,7 +13,7 @@ const App = () => {
     const [employees, setEmployees] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [formStatus, setFormStatus] = useState(false)
-
+    const [popupDeleteToggle, setPopupDeleteToggle] = useState(false)
 
     // Form data
     const [formData, setFormData] = useState({
@@ -133,7 +133,6 @@ const App = () => {
                 }
             }
             setEmployees((prevState) => [...prevState, employee])
-            console.log(employees)
         } else {
             setFormStatus(false)
         }
@@ -180,7 +179,7 @@ const App = () => {
                                     iconStyle="search-list-icon" onSearchInput={onSearchInput} />
                                 <button className="btn btn-add" onClick={() => setToggleFormModal(true)}><i className="fa-solid fa-plus icon-add"></i> Add new</button>
                             </div>
-                            <ListEmployee employees={employees} searchValue={searchValue} />
+                            <ListEmployee employees={employees} searchValue={searchValue} popupDeleteToggle={popupDeleteToggle} setPopupDeleteToggle={setPopupDeleteToggle} />
                         </div>
                     </div>
 
