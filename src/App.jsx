@@ -9,7 +9,11 @@ import SearchList from './components/search/Search'
 import ListEmployee from './components/list/List'
 import FormModal from './components/formModal/FormModal'
 const App = () => {
+
     const [employees, setEmployees] = useState([])
+    const [searchValue, setSearchValue] = useState('')
+    const [formStatus, setFormStatus] = useState(false)
+
 
     // Form data
     const [formData, setFormData] = useState({
@@ -112,6 +116,8 @@ const App = () => {
 
         if (!formStatusIterate) {
             // no problem with error form
+
+            setFormStatus(true)
             let employee = {
                 id: employees.length,
                 name: formData.employeeName.value,
@@ -127,7 +133,16 @@ const App = () => {
                 }
             }
             setEmployees((prevState) => [...prevState, employee])
+            console.log(employees)
+        } else {
+            setFormStatus(false)
         }
+    }
+
+    const onSearchInput = (searchValue) => {
+        // copy of the original data
+        setSearchValue(searchValue)
+
     }
     return (
         <div className="wrapper-page">
@@ -162,10 +177,10 @@ const App = () => {
                                     className="search-list-wrapper col-10"
                                     icon="fa-solid fa-magnifying-glass"
                                     placeholder="search"
-                                    iconStyle="search-list-icon" />
+                                    iconStyle="search-list-icon" onSearchInput={onSearchInput} />
                                 <button className="btn btn-add" onClick={() => setToggleFormModal(true)}><i className="fa-solid fa-plus icon-add"></i> Add new</button>
                             </div>
-                            <ListEmployee employees={employees} />
+                            <ListEmployee employees={employees} searchValue={searchValue} />
                         </div>
                     </div>
 

@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import EmployeeCard from '../card/Card'
 import './list.css'
-const List = ({ employees }) => {
-    console.log(employees)
+const List = ({ employees, searchValue }) => {
+
+    const [filterData, setFilterData] = useState([])
+
+    useEffect(() => {
+        if (searchValue.length > 0) {
+            let filter = employees.filter((employee) => employee.name.toLowerCase().includes(searchValue))
+            setFilterData(filter)
+        } else {
+            setFilterData(employees)
+        }
+    }, [searchValue, employees])
+
     return (
         <div className="wrapper-list">
             <div className="row g-0">
                 {
-                    employees.length ? (
-                        employees.map((employee, index) => (
-
+                    filterData.length ? (
+                        filterData.map((employee, index) => (
                             <div className="col-4" key={index}>
                                 <EmployeeCard
                                     name={employee.name}
