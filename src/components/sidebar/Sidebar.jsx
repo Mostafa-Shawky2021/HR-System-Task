@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './sidebar.css'
+
 const Sidebar = () => {
     return (
-        <aside className="sidebar">
+        <aside className="sidebar" id="sidebar">
             <ul className="list-unstyled list ">
                 <li className="item">
                     <a href="#" className="item-link d-flex flex-column">

@@ -1,15 +1,16 @@
-.wrapper-page {
+.page-wrapper {
+    padding-left: 15px;
+    padding-left: 15px;
     background-color: var(--main-color);
     height: 100vh;
+    overflow: hidden;
 }
 
-
-.wrapper-page .custom-container {
-    padding-left: 26px;
-    padding-right: 2px;
+.page-wrapper .searh-add-wrapper {
+    margin-top: 35px;
 }
 
-.wrapper-page .search-list-wrapper {
+.page-wrapper .search-list-wrapper {
     border: 5px solid #fff;
     border-radius: 5px;
     background-color: #fff;
@@ -17,7 +18,7 @@
     width: 89%;
 }
 
-.wrapper-page .search-list-wrapper .search-list-icon {
+.page-wrapper .search-list-wrapper .search-list-icon {
     position: absolute;
     left: 27px;
     top: 50%;
@@ -26,18 +27,18 @@
     font-size: 20px;
 }
 
-.wrapper-page .search-list-wrapper input {
+.page-wrapper .search-list-wrapper input {
     padding: 6px 42px
 }
 
-.wrapper-page .search-list-wrapper input::plceholder {
+.page-wrappere .search-list-wrapper input::plceholder {
     color: #707070;
     text-transform: capitalize;
     font-weight: 400;
 
 }
 
-.wrapper-page .btn-add {
+.page-wrapper .btn-add {
     background-color: #2764ac;
     color: #fff;
     border-radius: 5px;
@@ -47,15 +48,15 @@
 
 }
 
-.wrapper-page .btn-add:hover,
-.wrapper-page .btn-add:focus,
-.wrapper-page .btn-add:active {
+.page-wrapper .btn-add:hover,
+.page-wrapper .btn-add:focus,
+.page-wrapper .btn-add:active {
     background-color: #173b66;
     color: #fff;
     box-shadow: unset
 }
 
-.wrapper-page .btn-add .icon-add {
+.page-wrapper .btn-add .icon-add {
     margin-right: 10px;
 
 }

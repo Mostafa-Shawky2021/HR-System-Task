@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './formModal.css'
 import DropDownOption from "../dropdown/Dropdown"
 const FormModal = ({
     setToggleFormModal,
+    toggleFormModal,
     onSubmitData,
     setFormData,
     formData,
 
-}) => {
 
+}) => {
+    console.log(toggleFormModal)
+    // toggle Dropdown modal
     const [officeNameToggle, setOfficeNameToggle] = useState(false)
     const [departmentNameToggle, setDepartmentNameToggle] = useState(false)
     const [attendanceNameToggle, setAttendanceNameToggle] = useState(false)
@@ -16,7 +19,7 @@ const FormModal = ({
     const [positionToggle, setPositionToggle] = useState(false)
     const [directManagerToggle, setDirectManagerToggle] = useState(false)
 
-
+    // Options displayed in dropdown menu
     const [officeOption, setOfficeOption] = useState(['Arabic Localizer', 'Arabic Localizer Alex'])
     const [departmentOption, setDepartmentOption] = useState(['Hr Head', 'Accountant', 'Development'])
     const [attendanceOption, setAttendanceOption] = useState(['Present', 'Absent', 'on Leave'])
@@ -24,7 +27,21 @@ const FormModal = ({
     const [positionOption, setPositionOption] = useState(['Project Manager', 'HR'])
     const [directManagerOption, setDirectManagerOption] = useState(["Nabil Mahmoud", "Ahmed Mohamed"])
 
+    const formModal = useRef(null)
+    useEffect(() => {
+        const onKeyPress = (e) => {
+            console.log(e.keyCode)
+            if (e.keyCode === 27 && toggleFormModal) {
+                setToggleFormModal(false)
 
+            }
+        }
+        document.body.addEventListener('keyup', onKeyPress)
+        return () => {
+            document.body.removeEventListener('keyup', onKeyPress)
+        }
+    }, [])
+    // This function is get the selected from reusable drop down menu 
     const getSelectedOption = (requiredDropdown, value) => {
 
         if (requiredDropdown === 'office') {
@@ -60,6 +77,8 @@ const FormModal = ({
             })
         }
     }
+
+
     return (
         <div className='custom-modal'>
             <form className="form-modal">
