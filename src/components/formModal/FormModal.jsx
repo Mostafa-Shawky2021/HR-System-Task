@@ -91,10 +91,6 @@ const FormModal = ({
                                 </div>
                             </div>
 
-
-
-                            department,
-                            position
                             <div className="mb-2 col-6 wrap">
                                 <span className="error">{startDateErr}</span>
                                 <label className="form-label" htmlFor="date">Start Date</label>
