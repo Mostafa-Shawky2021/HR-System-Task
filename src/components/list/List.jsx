@@ -25,24 +25,21 @@ const List = ({
                 {
                     filterData.length ? (
                         filterData.map((employee, index) => (
-                            <>
-                                <div className="col-4" key={index}>
-                                    <EmployeeCard
-                                        id={employee.id}
-                                        name={employee.name}
-                                        position={employee.position}
-                                        department={employee.department}
-                                        attendance={employee.attendance}
-                                        officeName={employee.office.name}
-                                        officeRole={employee.office.role}
-                                        officeCopiedManager={employee.office.copiedManager}
-                                        officeJoiningDate={employee.office.joiningDate}
-                                        officeManager={employee.office.manager}
-                                        onDeleteEmployee={onDeleteEmployee}
-                                    />
-
-                                </div>
-                            </>
+                            <div className="col-4" key={index}>
+                                <EmployeeCard
+                                    id={employee.id}
+                                    name={employee.name}
+                                    position={employee.position}
+                                    department={employee.department}
+                                    attendance={employee.attendance}
+                                    officeName={employee.office.name}
+                                    officeRole={employee.office.role}
+                                    officeCopiedManager={employee.office.copiedManager}
+                                    officeJoiningDate={employee.office.joiningDate}
+                                    officeManager={employee.office.manager}
+                                    onDeleteEmployee={onDeleteEmployee}
+                                />
+                            </div>
                         ))
 
                     ) : (

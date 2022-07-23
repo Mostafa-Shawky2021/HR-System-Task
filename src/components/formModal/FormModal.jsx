@@ -3,15 +3,10 @@ import './formModal.css'
 import DropDownOption from "../dropdown/Dropdown"
 const FormModal = ({
     setToggleFormModal,
-    toggleFormModal,
     onSubmitData,
     setFormData,
     formData,
-    employeeNameErr,
-    startDateErr,
-    emailErr,
-    departmentErr,
-    positionErr
+
 }) => {
 
     const [officeNameToggle, setOfficeNameToggle] = useState(false)
@@ -29,7 +24,7 @@ const FormModal = ({
     const [positionOption, setPositionOption] = useState(['Project Manager', 'HR'])
     const [directManagerOption, setDirectManagerOption] = useState(["Nabil Mahmoud", "Ahmed Mohamed"])
 
-    console.log(employeeNameErr, emailErr, startDateErr, departmentErr, positionErr)
+
     const getSelectedOption = (requiredDropdown, value) => {
 
         if (requiredDropdown === 'office') {
@@ -74,12 +69,12 @@ const FormModal = ({
                     <p className="person-info-title">Personal Info</p>
                     <div className="row">
                         <div className="col-4">
-                            <div className="img"></div>
+                            <div className="img" style={{ textAlign: 'center', lineHeight: '100px', fontSize: '2rem', fontWeigt: 'bold' }}>Soon</div>
                         </div>
                         <div className="col-8 row">
                             <div className="mb-2 col-6 wrap">
 
-                                <span className="error">{employeeNameErr}</span>
+                                <span className="error">{formData.employeeName.errMsg}</span>
                                 <label className="form-label" htmlFor="name">Name</label>
                                 <div className="col-12" >
                                     <input className="form-control" id="name"
@@ -92,7 +87,7 @@ const FormModal = ({
                             </div>
 
                             <div className="mb-2 col-6 wrap">
-                                <span className="error">{startDateErr}</span>
+                                <span className="error">{formData.startDate.errMsg}</span>
                                 <label className="form-label" htmlFor="date">Start Date</label>
                                 <div className="col-12" >
                                     <input className="form-control" id="date" type="date"
@@ -111,7 +106,7 @@ const FormModal = ({
                                 </div>
                             </div>
                             <div className="mb-2 col-6 wrap">
-                                <span className="error">{emailErr}</span>
+                                <span className="error">{formData.email.errMsg}</span>
                                 <label className="form-label" htmlFor="email">Email</label>
                                 <div className="col-12" >
                                     <input className="form-control" id="email" onChange={
@@ -144,7 +139,7 @@ const FormModal = ({
                     <div className="mb-2 ">
                         <div className="row">
                             <div className="col-6 wrap">
-                                <span className="error">{departmentErr}</span>
+                                <span className="error">{formData.departmentName.errMsg}</span>
                                 <label className="form-label">Department</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setDepartmentNameToggle(!departmentNameToggle)}>
                                     <span>{`${formData.departmentName.value ? formData.departmentName.value : 'Select'}`}</span>
@@ -176,7 +171,7 @@ const FormModal = ({
                                 </div>
                             </div>
                             <div className="col-6 wrap">
-                                <span className="error">{positionErr}</span>
+                                <span className="error">{formData.positionName.errMsg}</span>
                                 <label className="form-label">Position</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setPositionToggle(!positionToggle)}>
                                     <span>{`${formData.positionName.value ? formData.positionName.value : 'Select'}`}</span>
