@@ -8,6 +8,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import SearchList from './components/search/Search'
 import ListEmployee from './components/list/List'
 import FormModal from './components/formModal/FormModal'
+
 const App = () => {
 
     const [employees, setEmployees] = useState([])
@@ -15,7 +16,7 @@ const App = () => {
     const [formStatus, setFormStatus] = useState(false)
     const [popupDeleteToggle, setPopupDeleteToggle] = useState(false)
 
-    // Form data
+    // Form data 
     const [formData, setFormData] = useState({
         employeeName: { value: '', errMsg: '', validate: false },
         startDate: { value: '', errMsg: '', validate: false },
@@ -138,14 +139,16 @@ const App = () => {
         }
     }
 
-    const onSearchInput = (searchValue) => {
-        // copy of the original data
-        setSearchValue(searchValue)
-
+    const onDeleteEmployee = (id) => {
+        let confirmStatus = window.confirm('Are you sure you want to delete employee?')
+        if (confirmStatus) {
+            setEmployees(employees.filter((employee) => employee.id !== id))
+        }
     }
     return (
         <div className="wrapper-page">
             {
+                // Show only in case user click add new employee
                 toggleFormModal && (
                     <FormModal
                         setFormData={setFormData}
@@ -161,7 +164,6 @@ const App = () => {
                     />
                 )
             }
-
             <div className="container-fluid">
                 <div className="row g-0">
                     <div className="col-1">
@@ -176,10 +178,18 @@ const App = () => {
                                     className="search-list-wrapper col-10"
                                     icon="fa-solid fa-magnifying-glass"
                                     placeholder="search"
-                                    iconStyle="search-list-icon" onSearchInput={onSearchInput} />
+                                    iconStyle="search-list-icon"
+                                    setSearchValue={setSearchValue} />
                                 <button className="btn btn-add" onClick={() => setToggleFormModal(true)}><i className="fa-solid fa-plus icon-add"></i> Add new</button>
                             </div>
-                            <ListEmployee employees={employees} searchValue={searchValue} popupDeleteToggle={popupDeleteToggle} setPopupDeleteToggle={setPopupDeleteToggle} />
+                            <ListEmployee
+                                employees={employees}
+                                searchValue={searchValue}
+                                popupDeleteToggle={popupDeleteToggle}
+                                setPopupDeleteToggle={setPopupDeleteToggle}
+                                onDeleteEmployee={onDeleteEmployee}
+
+                            />
                         </div>
                     </div>
 
