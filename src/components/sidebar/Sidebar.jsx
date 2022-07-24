@@ -1,9 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import './sidebar.css'
 
 const Sidebar = ({ employeesCount }) => {
+    const [closeSidebar, setCloseSidebar] = useState(false)
+
+    const handleCloseSidebar = () => {
+        setCloseSidebar(!closeSidebar)
+        // Set pagewrapper dynamic
+        const windowWidth = window.innerWidth;
+        const sidebar = document.getElementById('sidebar')
+        const sidebarWidth = sidebar.clientWidth;
+        const pageWrapper = document.getElementById('page-wrapper')
+        if (!closeSidebar) {
+            document.getElementById('page-wrapper').style.left = "0px";
+            document.getElementById('page-wrapper').style.width = "100%";
+
+        } else {
+            // Set pagewrapper dynamic
+            if (windowWidth >= 0 && windowWidth <= 768) {
+                pageWrapper.style.left = '0px'
+                pageWrapper.style.width = '100%'
+            } else {
+                const windowWidth = window.innerWidth;
+                const sidebar = document.getElementById('sidebar')
+                const sidebarWidth = sidebar.clientWidth;
+                const pageWrapper = document.getElementById('page-wrapper')
+                pageWrapper.style.left = `${sidebarWidth}px`
+                pageWrapper.style.width = `${(windowWidth - sidebarWidth) - 17}px`
+            }
+
+        }
+    }
     return (
-        <aside className="sidebar" id="sidebar">
+        <aside className={`${closeSidebar ? 'sidebar-close' : ''} sidebar`} id="sidebar">
+            <div className="gear-icon" onClick={handleCloseSidebar}>
+                <i className="fa-solid fa-gear icon"></i>
+            </div>
             <ul className="list-unstyled list ">
                 <li className="item">
                     <a href="#" className="item-link d-flex flex-column">

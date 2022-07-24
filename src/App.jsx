@@ -33,9 +33,24 @@ const App = () => {
     let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     useEffect(() => {
-        // Set pagewrapper dynamic 
-        const sidebar = document.getElementById('sidebar').clientWidth;
-        const pageWrapper = document.getElementById('page-wrapper').style.paddingLeft = `${sidebar + 20}px`
+        // Set pagewrapper dynamic
+        const windowWidth = window.innerWidth;
+        const sidebar = document.getElementById('sidebar')
+        const sidebarWidth = sidebar.clientWidth;
+        const pageWrapper = document.getElementById('page-wrapper')
+
+
+
+
+        // check if the window in xs,sm,md
+        if (windowWidth >= 0 && windowWidth <= 768) {
+            pageWrapper.style.left = '0px'
+            pageWrapper.style.width = '100%'
+        } else {
+            pageWrapper.style.left = `${sidebarWidth}px`
+            pageWrapper.style.width = `${(windowWidth - sidebarWidth) - 17}px`
+        }
+
         setEmployees(employeeData)
     }, [])
 
@@ -145,7 +160,7 @@ const App = () => {
 
                 if (key !== "officeName" && key !== "attendanceName" && key !== "roleName" && key !== "directManagerName") {
                     formData[key].validate = false
-                    console.log(`the key is => ${key}`)
+                    console.log(`the key is => ${key} `)
                 }
 
             }
@@ -177,29 +192,32 @@ const App = () => {
                 )
             }
             <Sidebar employeesCount={employees.length} />
-            <Header />
             <div className="page-wrapper" id="page-wrapper">
-                <div className="searh-add-wrapper">
-                    <div className="d-flex">
-                        <div className="col">
-                            <div className="d-flex align-items-center">
-                                <SearchList
-                                    className="search-list-wrapper col-7 col-md-9 col-lg-10"
-                                    icon="fa-solid fa-magnifying-glass"
-                                    placeholder="search"
-                                    iconStyle="search-list-icon"
-                                    setSearchValue={setSearchValue} />
-                                <button className="btn btn-add" onClick={() => setToggleFormModal(true)}><i className="fa-solid fa-plus icon-add"></i> Add new</button>
+                <Header />
+                <div className="page">
+                    <div className="searh-add-wrapper">
+                        <div className="d-flex">
+                            <div className="col">
+                                <div className="d-flex align-items-center">
+                                    <SearchList
+                                        className="search-list-wrapper col-7 col-md-9 col-lg-10"
+                                        icon="fa-solid fa-magnifying-glass"
+                                        placeholder="search"
+                                        iconStyle="search-list-icon"
+                                        setSearchValue={setSearchValue} />
+                                    <button className="btn btn-add" onClick={() => setToggleFormModal(true)}><i className="fa-solid fa-plus icon-add"></i> Add new</button>
+                                </div>
+                                <ListEmployee
+                                    employees={employees}
+                                    searchValue={searchValue}
+                                    onDeleteEmployee={onDeleteEmployee}
+                                />
                             </div>
-                            <ListEmployee
-                                employees={employees}
-                                searchValue={searchValue}
-                                onDeleteEmployee={onDeleteEmployee}
-                            />
                         </div>
                     </div>
 
                 </div>
+
 
             </div>
         </>

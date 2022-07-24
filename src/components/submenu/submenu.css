@@ -9,11 +9,17 @@
     z-index: 99;
     right: -5px;
     top: 45px;
-    display: flex;
+
     transform: scale(0, 0);
     transform-origin: 100% 0%;
     transition: all 0.2s;
+    display: none;
+}
 
+@media screen and (min-width: 768px) {
+    .submenu-wrapper .submenu {
+        display: flex;
+    }
 }
 
 .submenu-wrapper .submenu.animate-submenu {

@@ -3,13 +3,7 @@
     padding-top: 10px;
     flex-grow: 1;
     height: 79px;
-    padding-right: 25px;
-}
-
-@media screen and (min-width:768px) {
-    .header {
-        padding-right: 80px;
-    }
+    width: 100%;
 }
 
 .header .header-content {
@@ -35,12 +29,25 @@
     color: #fff;
     padding: 2px 24px;
     font-size: 14px;
+    display: none;
+}
+
+@media screen and (min-width:768px) {
+    .header .header-content .btn-signin {
+        display: block;
+    }
 }
 
 .header .header-content .notification-wrapper {
     position: relative;
+    display: none;
 }
 
+@media screen and(min-width:768px) {
+    .header .header-content .notification-wrapper {
+        display: block
+    }
+}
 
 .header .header-content .notification-wrapper .notification-count {
     content: '';
@@ -66,6 +73,17 @@
     color: var(--soft-gray-color);
     position: relative;
     cursor: pointer;
+    margin-right: 50px;
+}
+
+@media screen and (min-width:576px) {
+    .header .header-content .user-info-wrapper {}
+}
+
+@media screen and (min-width:992px) {
+    .header .header-content .user-info-wrapper {
+        margin-right: 50px;
+    }
 }
 
 .header .header-content .user-info-wrapper .avatar {

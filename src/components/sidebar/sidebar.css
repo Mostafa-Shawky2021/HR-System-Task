@@ -2,12 +2,36 @@
     padding-top: 59px;
     text-align: center;
     background-image: linear-gradient(to bottom, var(--primary-color), var(--primary-color-seconday));
-    height: 100vh;
-    width: 106px;
+    height: 100%;
     position: fixed;
     left: 0px;
     z-index: 99;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 106px;
+}
 
+.sidebar.sidebar-close {
+    left: -106px;
+}
+
+.sidebar .gear-icon {
+    position: absolute;
+    right: -30px;
+    top: 81px;
+    color: #ffffff;
+    background-color: var(--secondary-color);
+    width: 30px;
+    height: 29px;
+    font-size: 13px;
+    line-height: 29px;
+    cursor: pointer;
+}
+
+.sidebar .gear-icon .icon {
+    animation: moving-gear 1.4s linear infinite;
+    transform-origin: 50%;
 }
 
 .sidebar .list .item {
@@ -50,4 +74,15 @@
 .sidebar .list .item .item-link .icon-sidebar {
     font-size: 29px;
     margin-bottom: 8px;
+}
+
+@keyframes moving-gear {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+
 }
