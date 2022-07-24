@@ -30,7 +30,6 @@ const App = () => {
 
     })
 
-
     let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     useEffect(() => {
@@ -54,6 +53,7 @@ const App = () => {
         } else {
 
             setFormData((prevState) => {
+
                 prevState.employeeName.errMsg = ''
                 prevState.employeeName.validate = true;
                 return { ...prevState }
@@ -68,6 +68,7 @@ const App = () => {
             })
         } else {
             setFormData((prevState) => {
+
                 prevState.startDate.errMsg = ''
                 prevState.startDate.validate = true;
                 return { ...prevState }
@@ -94,6 +95,7 @@ const App = () => {
             })
         } else {
             setFormData((prevState) => {
+
                 prevState.departmentName.errMsg = ''
                 prevState.departmentName.validate = true;
                 return { ...prevState }
@@ -117,12 +119,15 @@ const App = () => {
 
         let formStatusIterate = Object.entries(formData).some(([key, value]) => {
             // false meaning there is error in inputs   
+
             return value.validate === false
         })
 
+
+        // formStatusIterate ? setFormStatus(false) : setFormStatus(true)
+        // console.log(formStatusIterate)
         if (!formStatusIterate) {
-            console.log('good')
-            // no problem with error form
+
             let employee = {
                 id: employees.length,
                 name: formData.employeeName.value,
@@ -137,17 +142,24 @@ const App = () => {
                     manager: formData.directManagerName.value
                 }
             }
+
+
             for (let key in formData) {
-                employee[key] = formData[key].value = ''
-                employee[key] = formData[key].errMsg = '';
+                formData[key].value = ''
+                formData[key].errMsg = '';
+
+                if (key !== "officeName" && key !== "attendanceName" && key !== "roleName" && key !== "directManagerName") {
+                    formData[key].validate = false
+                    console.log(`the key is => ${key}`)
+                }
 
             }
             setToggleFormModal(false)
-            setEmployees((prevState) => [...prevState, employee])
+            employees.length ? setEmployees((prevState) => [...prevState, employee]) : setEmployees((prevState) => [employee])
         }
+        setFormStatus(false)
 
     }
-
 
     const onDeleteEmployee = (id) => {
         let confirmStatus = window.confirm('Are you sure you want to delete employee?')
@@ -169,7 +181,7 @@ const App = () => {
                     />
                 )
             }
-            <Sidebar />
+            <Sidebar employeesCount={employees.length} />
             <Header />
             <div className="page-wrapper" id="page-wrapper">
                 <div className="searh-add-wrapper">
@@ -195,9 +207,6 @@ const App = () => {
                 </div>
 
             </div>
-
-
-
         </>
     )
 }

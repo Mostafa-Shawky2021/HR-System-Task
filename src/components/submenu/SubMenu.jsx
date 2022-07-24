@@ -5,7 +5,6 @@ const SubMenu = ({ subMenuToggle, setSubMenuToggle, subMenuElementRef }) => {
 
     useEffect(() => {
         const onBodyClickSubMenu = (e) => {
-            console.log(e.target)
             if (subMenuElementRef.current.contains(e.target)) {
                 return
             }

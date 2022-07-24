@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({ employeesCount }) => {
     return (
         <aside className="sidebar" id="sidebar">
             <ul className="list-unstyled list ">
@@ -26,6 +26,7 @@ const Sidebar = () => {
                 <li className="item active">
                     <a href="#" className="item-link d-flex flex-column">
                         <i className="fa-solid fa-user-group icon-sidebar"></i>
+                        <span className="employee-count">{employeesCount}</span>
                         <span className="text-sidebar">Employees</span>
                     </a>
                 </li>
