@@ -1,6 +1,15 @@
 import React, { useEffect, useRef } from 'react'
 import './submenu.css'
-const SubMenu = ({ subMenuToggle, setSubMenuToggle, subMenuElementRef }) => {
+const SubMenu = ({
+    subMenuToggle,
+    setSubMenuToggle,
+    subMenuElementRef,
+    officeName,
+    officeRole,
+    officeCopiedManager,
+    officeJoiningDate,
+    officeManagers
+}) => {
 
 
     useEffect(() => {
@@ -22,17 +31,17 @@ const SubMenu = ({ subMenuToggle, setSubMenuToggle, subMenuElementRef }) => {
                 <div className="col">
                     <div className="office-details">
                         <p className="title">Office</p>
-                        <p className="name">Arabic Localizer</p>
+                        <p className="name">{officeName}</p>
                         <p className="secondary-title">Joining Date</p>
-                        <p className="seconday-name">12/12/2018</p>
+                        <p className="seconday-name">{officeJoiningDate}</p>
                     </div>
                 </div>
                 <div className="col">
                     <div className="office-details">
                         <p className="title">Role</p>
-                        <p className="name">Employee</p>
-                        <p className="secondary-title">Manager</p>
-                        <p className="seconday-name">Mohamed Tarek</p>
+                        <p className="name">{officeRole}</p>
+                        <p className="secondary-title">{officeCopiedManager}</p>
+                        <p className="seconday-name">{officeManagers}</p>
                     </div>
 
                 </div>

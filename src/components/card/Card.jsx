@@ -54,7 +54,17 @@ const Card = (
                             <div className="submenu-parent" ref={subMenuWrapper}>
                                 <i className="fa-solid fa-ellipsis-vertical icon" onClick={() => setSubMenuToggle(!subMenuToggle)}></i>
                                 {/* submenu */}
-                                <SubMenu subMenuToggle={subMenuToggle} setSubMenuToggle={setSubMenuToggle} subMenuElementRef={subMenuWrapper} />
+                                <SubMenu
+                                    subMenuToggle={subMenuToggle}
+                                    setSubMenuToggle={setSubMenuToggle}
+                                    subMenuElementRef={subMenuWrapper}
+                                    officeName={officeName}
+                                    officeRole={officeRole}
+                                    officeCopiedManager={officeCopiedManager}
+                                    officeJoiningDate={officeJoiningDate}
+                                    officeManager={officeManager}
+
+                                />
                             </div>
 
                         </div>

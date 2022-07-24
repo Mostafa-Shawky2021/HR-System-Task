@@ -3,8 +3,13 @@
     padding-top: 10px;
     flex-grow: 1;
     height: 79px;
-    padding-right: 80px;
+    padding-right: 25px;
+}
 
+@media screen and (min-width:768px) {
+    .header {
+        padding-right: 80px;
+    }
 }
 
 .header .header-content {
@@ -16,6 +21,13 @@
     margin: 0px;
     color: var(--primary-typography);
     font-weight: 500;
+    display: none;
+}
+
+@media screen and (min-width:768px) {
+    .header .header-content .date {
+        display: block;
+    }
 }
 
 .header .header-content .btn-signin {
@@ -71,7 +83,7 @@
 
 .header .header-content .user-info-wrapper .icon-chevron-down {
     position: absolute;
-    top: 50%;
+    top: 46%;
     right: -21px;
     transform: translateY(-50%);
     font-size: 13px;

@@ -119,13 +119,8 @@ const App = () => {
 
         let formStatusIterate = Object.entries(formData).some(([key, value]) => {
             // false meaning there is error in inputs   
-
             return value.validate === false
         })
-
-
-        // formStatusIterate ? setFormStatus(false) : setFormStatus(true)
-        // console.log(formStatusIterate)
         if (!formStatusIterate) {
 
             let employee = {
@@ -189,7 +184,7 @@ const App = () => {
                         <div className="col">
                             <div className="d-flex align-items-center">
                                 <SearchList
-                                    className="search-list-wrapper"
+                                    className="search-list-wrapper col-7 col-md-9 col-lg-10"
                                     icon="fa-solid fa-magnifying-glass"
                                     placeholder="search"
                                     iconStyle="search-list-icon"

@@ -85,11 +85,11 @@ const FormModal = ({
                     <h3 className="title">new employee</h3>
                     <p className="person-info-title">Personal Info</p>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-12 col-md-4">
                             <div className="img" style={{ textAlign: 'center', lineHeight: '100px', fontSize: '2rem', fontWeigt: 'bold' }}>Soon</div>
                         </div>
-                        <div className="col-8 row">
-                            <div className="mb-2 col-6 wrap">
+                        <div className="col-12 col-md-8 row">
+                            <div className="mb-2 col-12 col-md-6 wrap">
 
                                 <span className="error">{formData.employeeName.errMsg}</span>
                                 <label className="form-label" htmlFor="name">Name</label>
@@ -103,7 +103,7 @@ const FormModal = ({
                                 </div>
                             </div>
 
-                            <div className="mb-2 col-6 wrap">
+                            <div className="mb-2 col-12 col-md-6  wrap">
                                 <span className="error">{formData.startDate.errMsg}</span>
                                 <label className="form-label" htmlFor="date">Start Date</label>
                                 <div className="col-12" >
@@ -116,13 +116,13 @@ const FormModal = ({
                                 </div>
                             </div>
 
-                            <div className="mb-2 col-6 wrap">
+                            <div className="mb-2 col-12 col-md-6 wrap">
                                 <label className="form-label" htmlFor="phone">Phone</label>
                                 <div className="col-12" >
                                     <input className="form-control" id="phone" />
                                 </div>
                             </div>
-                            <div className="mb-2 col-6 wrap">
+                            <div className="mb-2 col-12 col-md-6 wrap">
                                 <span className="error">{formData.email.errMsg}</span>
                                 <label className="form-label" htmlFor="email">Email</label>
                                 <div className="col-12" >
@@ -155,7 +155,7 @@ const FormModal = ({
                     {/* department,attendance */}
                     <div className="mb-2 ">
                         <div className="row">
-                            <div className="col-6 wrap">
+                            <div className="col-12 col-md-6 wrap">
                                 <span className="error">{formData.departmentName.errMsg}</span>
                                 <label className="form-label">Department</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setDepartmentNameToggle(!departmentNameToggle)}>
@@ -164,7 +164,7 @@ const FormModal = ({
                                     {departmentNameToggle && <DropDownOption requiredDropdown="department" getSelectedOption={getSelectedOption} options={departmentOption} />}
                                 </div>
                             </div>
-                            <div className="col-6 wrap">
+                            <div className="col-12 col-md-6 wrap">
                                 <label className="form-label">Office</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setAttendanceNameToggle(!attendanceNameToggle)}>
                                     <span>{`${formData.attendanceName.value ? formData.attendanceName.value : 'Select'}`}</span>
@@ -179,7 +179,7 @@ const FormModal = ({
                     {/* role, position */}
                     <div className="mb-2">
                         <div className="row">
-                            <div className="col-6 wrap">
+                            <div className="col-12 col-md-6 wrap">
                                 <label className="form-label">Role</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setRoleNameToggle(!roleNameToggle)}>
                                     <span>{`${formData.roleName.value ? formData.roleName.value : 'Select'}`}</span>
@@ -187,7 +187,7 @@ const FormModal = ({
                                     {roleNameToggle && <DropDownOption requiredDropdown="role" getSelectedOption={getSelectedOption} options={roleOption} />}
                                 </div>
                             </div>
-                            <div className="col-6 wrap">
+                            <div className="col-12 col-md-6 wrap">
                                 <span className="error">{formData.positionName.errMsg}</span>
                                 <label className="form-label">Position</label>
                                 <div className="select-dropdown-wrapper" onClick={() => setPositionToggle(!positionToggle)}>

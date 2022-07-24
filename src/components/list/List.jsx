@@ -25,7 +25,7 @@ const List = ({
                 {
                     filterData.length ? (
                         filterData.map((employee, index) => (
-                            <div className="col-4" key={index}>
+                            <div className="col-12 col-md-6 col-xl-4" key={index}>
                                 <EmployeeCard
                                     id={employee.id}
                                     name={employee.name}
