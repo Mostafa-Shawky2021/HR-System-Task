@@ -40,8 +40,6 @@ const App = () => {
         const pageWrapper = document.getElementById('page-wrapper')
 
 
-
-
         // check if the window in xs,sm,md
         if (windowWidth >= 0 && windowWidth <= 768) {
             pageWrapper.style.left = '0px'
@@ -61,73 +59,123 @@ const App = () => {
         if (formData.employeeName.value.trim().length === 0) {
 
             setFormData((prevState) => {
-                prevState.employeeName.errMsg = 'employee name is required'
-                prevState.employeeName.validate = false;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    employeeName: {
+                        ...prevState.employeeName,
+                        errMsg: 'employee name is required',
+                        validate: false,
+                    },
+                }
+
             })
         } else {
 
             setFormData((prevState) => {
+                return {
+                    ...prevState,
+                    employeeName: {
+                        ...prevState.employeeName,
+                        errMsg: '',
+                        validate: true,
+                    }
+                }
 
-                prevState.employeeName.errMsg = ''
-                prevState.employeeName.validate = true;
-                return { ...prevState }
             })
         }
 
         if (formData.startDate.value.trim().length === 0) {
             setFormData((prevState) => {
-                prevState.startDate.errMsg = 'date field is required'
-                prevState.startDate.validate = false;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    startDate: {
+                        ...prevState.startDate,
+                        errMsg: 'date field is required',
+                        validate: false,
+                    }
+                }
             })
         } else {
             setFormData((prevState) => {
-
-                prevState.startDate.errMsg = ''
-                prevState.startDate.validate = true;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    startDate: {
+                        ...prevState.startDate,
+                        errMsg: '',
+                        validate: true,
+                    }
+                }
             })
         }
         if (formData.email.value.search(emailRegex) === -1) {
             setFormData((prevState) => {
-                prevState.email.errMsg = 'Email must be valid'
-                prevState.email.validate = false;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    email: {
+                        ...prevState.email,
+                        errMsg: 'Email must be valid',
+                        validate: false,
+                    }
+                }
             })
         } else {
             setFormData((prevState) => {
-                prevState.email.errMsg = ''
-                prevState.email.validate = true;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    email: {
+                        ...prevState.email,
+                        errMsg: '',
+                        validate: true,
+                    }
+                }
             })
         }
         if (formData.departmentName.value.trim().length === 0) {
+
             setFormData((prevState) => {
-                prevState.departmentName.errMsg = 'Department is required'
-                prevState.departmentName.validate = false;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    departmentName: {
+                        ...prevState.departmentName,
+                        errMsg: 'Department is required',
+                        validate: false,
+                    }
+                }
             })
         } else {
             setFormData((prevState) => {
-
-                prevState.departmentName.errMsg = ''
-                prevState.departmentName.validate = true;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    departmentName: {
+                        ...prevState.departmentName,
+                        errMsg: '',
+                        validate: true,
+                    }
+                }
             })
         }
 
         if (formData.positionName.value.trim().length === 0) {
             setFormData((prevState) => {
-                prevState.positionName.errMsg = 'Position is required'
-                prevState.positionName.validate = false;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    positionName: {
+                        ...prevState.positionName,
+                        errMsg: 'Position is required',
+                        validate: false,
+                    }
+                }
             })
         } else {
             setFormData((prevState) => {
-                prevState.positionName.errMsg = ''
-                prevState.positionName.validate = true;
-                return { ...prevState }
+                return {
+                    ...prevState,
+                    positionName: {
+                        ...prevState.positionName,
+                        errMsg: '',
+                        validate: true,
+                    }
+                }
             })
         }
 
@@ -155,10 +203,27 @@ const App = () => {
 
 
             for (let key in formData) {
-                formData[key].value = ''
-                formData[key].errMsg = '';
+                setFormData((prevState) => {
+                    return {
+                        ...prevState,
+                        [key]: {
+                            ...prevState[key],
+                            value: '',
+                            errMsg: ''
+                        }
+                    }
+                })
 
                 if (key !== "officeName" && key !== "attendanceName" && key !== "roleName" && key !== "directManagerName") {
+                    setFormData((prevState) => {
+                        return {
+                            ...prevState,
+                            [key]: {
+                                ...prevState[key],
+                                validate: false
+                            }
+                        }
+                    })
                     formData[key].validate = false
                     console.log(`the key is => ${key} `)
                 }
