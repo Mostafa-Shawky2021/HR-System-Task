@@ -45,33 +45,68 @@ const FormModal = ({
         if (requiredDropdown === 'office') {
 
             setFormData((prevState) => {
-                prevState.officeName.value = value;
-                return prevState
+                return {
+                    ...prevState,
+                    officeName: {
+                        ...prevState.officeName,
+                        value: value
+                    }
+                }
+
             })
         } else if (requiredDropdown === 'department') {
             setFormData((prevState) => {
-                prevState.departmentName.value = value;
-                return prevState
+                return {
+                    ...prevState,
+                    departmentName: {
+                        ...prevState.departmentName,
+                        value: value
+                    }
+                }
             })
         } else if (requiredDropdown === 'attendance') {
             setFormData((prevState) => {
-                prevState.attendanceName.value = value;
-                return prevState
+                return {
+                    ...prevState,
+                    attendanceName: {
+                        ...prevState.attendanceName,
+                        value: value
+                    }
+                }
             })
         } else if (requiredDropdown === 'role') {
             setFormData((prevState) => {
-                prevState.roleName.value = value;
-                return prevState
+                return {
+                    ...prevState,
+                    roleName: {
+                        ...prevState.roleName,
+                        value: value
+                    }
+                }
+
             })
         } else if (requiredDropdown === 'position') {
             setFormData((prevState) => {
-                prevState.positionName.value = value;
-                return prevState
+                return {
+                    ...prevState,
+                    positionName: {
+                        ...prevState.positionName,
+                        value: value
+                    }
+                }
+
             })
         } else if (requiredDropdown === 'directmanager') {
             setFormData((prevState) => {
-                prevState.directManagerName.value = value;
-                return prevState
+                return {
+                    ...prevState,
+                    directManagerName: {
+                        ...prevState.directManagerName,
+                        value: value
+                    }
+
+                }
+
             })
         }
     }

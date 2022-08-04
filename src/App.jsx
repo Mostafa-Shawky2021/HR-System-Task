@@ -13,9 +13,7 @@ const App = () => {
 
     const [employees, setEmployees] = useState([])
     const [searchValue, setSearchValue] = useState('')
-    const [formStatus, setFormStatus] = useState(false)
     const [toggleFormModal, setToggleFormModal] = useState(false)
-
     // Form data 
     const [formData, setFormData] = useState({
         employeeName: { value: '', errMsg: '', validate: false },
@@ -181,11 +179,12 @@ const App = () => {
 
 
         let formStatusIterate = Object.entries(formData).some(([key, value]) => {
-            // false meaning there is error in inputs   
+            // false meaning there is error in inputs
             return value.validate === false
         })
+        console.log(formStatusIterate)
         if (!formStatusIterate) {
-
+            console.log('good')
             let employee = {
                 id: employees.length,
                 name: formData.employeeName.value,
@@ -224,18 +223,15 @@ const App = () => {
                             }
                         }
                     })
-                    formData[key].validate = false
-                    console.log(`the key is => ${key} `)
+
                 }
 
             }
             setToggleFormModal(false)
             employees.length ? setEmployees((prevState) => [...prevState, employee]) : setEmployees((prevState) => [employee])
         }
-        setFormStatus(false)
 
     }
-
     const onDeleteEmployee = (id) => {
         let confirmStatus = window.confirm('Are you sure you want to delete employee?')
         if (confirmStatus) {
