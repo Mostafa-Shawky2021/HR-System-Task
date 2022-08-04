@@ -36,24 +36,13 @@
     flex-grow: 1;
     margin-right: 10px;
 }
+/* @media screen and (min-width: 1800px) {
 
-
-/* }
-@media screen and (min-width:768px) {
-    .page-wrapper .search-list-wrapper  {
-        width: 80%;
-    }
-}
-@media screen and ( min-width:992px) {
-    .page-wrapper .search-list-wrapper  {
-        width: 85%;
-    }
-}
-@media screen and ( min-width:1170) {
-    .page-wrapper .search-list-wrapper  {
-        width: 90%;
+    .page-wrapper .search-list-wrapper {
+        
     }
 } */
+
 
 .page-wrapper .search-list-wrapper .search-list-icon {
     position: absolute;

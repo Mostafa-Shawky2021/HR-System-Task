@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './sidebar.css'
 
 const Sidebar = ({ employeesCount }) => {
     const [closeSidebar, setCloseSidebar] = useState(false)
+    const [viewPort, setViewPort] = useState(0)
+    // useEffect(()=> {
+    //     window.addEventListener('resize',function)
 
+
+
+    // },[viewPort])
     const handleCloseSidebar = () => {
         setCloseSidebar(!closeSidebar)
         // Set pagewrapper dynamic
@@ -11,26 +17,30 @@ const Sidebar = ({ employeesCount }) => {
         const sidebar = document.getElementById('sidebar')
         const sidebarWidth = sidebar.clientWidth;
         const pageWrapper = document.getElementById('page-wrapper')
+      
         if (!closeSidebar) {
             document.getElementById('page-wrapper').style.left = "0px";
             document.getElementById('page-wrapper').style.width = "100%";
 
         } else {
-        
+
             if (windowWidth >= 0 && windowWidth <= 768) {
                 pageWrapper.style.left = '0px'
                 pageWrapper.style.width = '100%'
+                
             } else {
                 const windowWidth = window.innerWidth;
                 const sidebar = document.getElementById('sidebar')
                 const sidebarWidth = sidebar.clientWidth;
                 const pageWrapper = document.getElementById('page-wrapper')
+
                 pageWrapper.style.left = `${sidebarWidth}px`
                 pageWrapper.style.width = `${windowWidth - sidebarWidth}px`
             }
 
         }
     }
+
     return (
         <aside className={`${closeSidebar ? 'sidebar-close' : ''} sidebar`} id="sidebar">
             <div className="gear-icon" onClick={handleCloseSidebar}>

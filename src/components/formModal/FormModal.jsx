@@ -9,7 +9,7 @@ const FormModal = ({
     formData,
     onCloseFormModel
 }) => {
-
+    console.log()
     // toggle Dropdown modal
     const [officeNameToggle, setOfficeNameToggle] = useState(false)
     const [departmentNameToggle, setDepartmentNameToggle] = useState(false)
@@ -106,7 +106,6 @@ const FormModal = ({
             })
         }
     }
-
 
     return (
         <div className='custom-modal'>

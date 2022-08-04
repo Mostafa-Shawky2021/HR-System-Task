@@ -1,3 +1,11 @@
 .wrapper-list {
     margin-top: 50px;
 }
+@media screen and (min-width:1800px) {
+    .wrapper-list [class*='col'] {
+        width: calc(100% / 4)
+    }
+    .wrapper-list .card-employee {
+        margin-right: 60px;
+    }
+}

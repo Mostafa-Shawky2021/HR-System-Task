@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import employeeData from "./data/employee.json"
 import "./index.css"
 import './App.css'
@@ -77,7 +77,6 @@ const App = () => {
 
     const onSubmitData = (event) => {
         event.preventDefault();
-        console.log(formData.employeeName.validate)
         // validation Form
         if (formData.employeeName.value.trim().length === 0) {
 
@@ -202,14 +201,12 @@ const App = () => {
             })
         }
 
-
         let formStatusIterate = Object.entries(formData).some(([key, value]) => {
             // false meaning there is error in inputs
             return value.validate === false
         })
- 
+        console.log(formStatusIterate)
         if (!formStatusIterate) {
-        
             let employee = {
                 id: employees.length,
                 name: formData.employeeName.value,
@@ -265,6 +262,7 @@ const App = () => {
             setEmployees(employees.filter((employee) => employee.id !== id))
         }
     }
+
     return (
         <>
             {
@@ -304,10 +302,7 @@ const App = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
         </>
     )

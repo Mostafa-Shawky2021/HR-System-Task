@@ -4,7 +4,7 @@
     border: 1px solid #eaeef0;
     margin-right: 10px;
     margin-bottom: 40px;
-    max-width: 95%;
+    max-width: 100%
 }
 
 
@@ -139,6 +139,7 @@
 .card-employee .employee-details .user-status .submenu .submenu-parent .icon {
     width: 100%;
     height: 100%;
+    cursor: pointer;
 
 }
 
