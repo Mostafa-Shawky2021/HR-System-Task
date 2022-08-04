@@ -16,6 +16,7 @@ const Card = (
         onDeleteEmployee
     }) => {
     const [subMenuToggle, setSubMenuToggle] = useState(false)
+    const [viewPort, setViewPort]  = useState(0)
     const subMenuWrapper = useRef(null)
     let attendanceStauts = {}
     if (attendance === "Present") {
@@ -26,7 +27,12 @@ const Card = (
         attendanceStauts = { className: 'leave', label: 'On Leave' }
     }
 
-
+    const truncateCharacter = (text)=> {
+        if( text.length > 20 ) {
+            return text.slice(0,20) + '...'
+        } 
+        return text
+    }
     return (
         <>
 
@@ -36,14 +42,18 @@ const Card = (
                         <img src="/assets/header/useravatar.png" alt="employee-avatar" className="employee-avatar img-fluid" />
                     </div>
                     <div className="control d-flex align-items-center">
-                        <button className='control-icon'><i className="fa-solid fa-pen"></i></button>
-                        <button className='control-icon'><i className="fa-solid fa-pause"></i></button>
-                        <button className='control-icon icon-trash'><i className="fa-solid fa-trash-can" onClick={() => onDeleteEmployee(id)}></i></button>
+                        <button className='control-icon'><i className="fa-solid fa-pen icon"></i></button>
+                        <button className='control-icon'><i className="fa-solid fa-pause icon"></i></button>
+                        <button className='control-icon icon-trash'><i className="fa-solid fa-trash-can icon" onClick={() => onDeleteEmployee(id)}></i></button>
                     </div>
                 </div>
 
                 <div className="employee-details">
-                    <p className="employee-name">{name}</p>
+                    <div className="employee-name-wrapper">
+                        {/* <p className="employee-name">{truncateCharacter(name)}</p> */}
+                        <p className="employee-name">{name}</p>
+
+                    </div>
                     <p className="job-title">{position}</p>
                     <p className="department">{department}</p>
                     <div className="user-status d-flex">
@@ -63,10 +73,8 @@ const Card = (
                                     officeCopiedManager={officeCopiedManager}
                                     officeJoiningDate={officeJoiningDate}
                                     officeManager={officeManager}
-
                                 />
                             </div>
-
                         </div>
                     </div>
                 </div>

@@ -7,8 +7,7 @@ const FormModal = ({
     onSubmitData,
     setFormData,
     formData,
-
-
+    onCloseFormModel
 }) => {
 
     // toggle Dropdown modal
@@ -29,7 +28,6 @@ const FormModal = ({
 
     useEffect(() => {
         const onKeyPress = (e) => {
-
             if (e.keyCode === 27 && toggleFormModal) {
                 setToggleFormModal(false)
             }
@@ -104,9 +102,7 @@ const FormModal = ({
                         ...prevState.directManagerName,
                         value: value
                     }
-
                 }
-
             })
         }
     }
@@ -261,7 +257,7 @@ const FormModal = ({
                     </div>
 
                     <div className="btn-wrapper">
-                        <button className="btn btn-close-form " onClick={() => setToggleFormModal(false)}>Cancel</button>
+                        <button className="btn btn-close-form" onClick={(e)=>onCloseFormModel(e)}>Cancel</button>
                         <button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Save</button>
                     </div>
                 </div>

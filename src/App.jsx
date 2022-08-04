@@ -14,6 +14,8 @@ const App = () => {
     const [employees, setEmployees] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [toggleFormModal, setToggleFormModal] = useState(false)
+    const [viewPort, setViewPort] = useState(0)
+
     // Form data 
     const [formData, setFormData] = useState({
         employeeName: { value: '', errMsg: '', validate: false },
@@ -31,12 +33,18 @@ const App = () => {
     let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     useEffect(() => {
+
         // Set pagewrapper dynamic
         const windowWidth = window.innerWidth;
         const sidebar = document.getElementById('sidebar')
         const sidebarWidth = sidebar.clientWidth;
         const pageWrapper = document.getElementById('page-wrapper')
 
+        const onBodyResize = ()=> {
+            setViewPort(window.innerWidth)
+        }
+
+        window.addEventListener('resize',onBodyResize)
 
         // check if the window in xs,sm,md
         if (windowWidth >= 0 && windowWidth <= 768) {
@@ -44,15 +52,32 @@ const App = () => {
             pageWrapper.style.width = '100%'
         } else {
             pageWrapper.style.left = `${sidebarWidth}px`
-            pageWrapper.style.width = `${(windowWidth - sidebarWidth) - 17}px`
+            pageWrapper.style.width = `${windowWidth - sidebarWidth}px`
         }
-
         setEmployees(employeeData)
-    }, [])
+    }, [viewPort])
+
+    // reset errMsg When user Close form 
+    const onCloseFormModel = (e)=> {
+        e.preventDefault()
+        for( let key in formData ) {
+            setFormData((prevState)=>{
+                return {
+                    ...prevState,
+                    [key]:{
+                        ...prevState[key],
+                        errMsg:''
+                    }
+                }
+            })
+        }
+        setToggleFormModal(false)
+
+    }
 
     const onSubmitData = (event) => {
         event.preventDefault();
-
+        console.log(formData.employeeName.validate)
         // validation Form
         if (formData.employeeName.value.trim().length === 0) {
 
@@ -68,7 +93,7 @@ const App = () => {
 
             })
         } else {
-
+            
             setFormData((prevState) => {
                 return {
                     ...prevState,
@@ -182,9 +207,9 @@ const App = () => {
             // false meaning there is error in inputs
             return value.validate === false
         })
-        console.log(formStatusIterate)
+ 
         if (!formStatusIterate) {
-            console.log('good')
+        
             let employee = {
                 id: employees.length,
                 name: formData.employeeName.value,
@@ -232,6 +257,8 @@ const App = () => {
         }
 
     }
+
+    
     const onDeleteEmployee = (id) => {
         let confirmStatus = window.confirm('Are you sure you want to delete employee?')
         if (confirmStatus) {
@@ -249,6 +276,7 @@ const App = () => {
                         setToggleFormModal={setToggleFormModal}
                         toggleFormModal={toggleFormModal}
                         onSubmitData={onSubmitData}
+                        onCloseFormModel={onCloseFormModel}
                     />
                 )
             }
@@ -259,9 +287,9 @@ const App = () => {
                     <div className="searh-add-wrapper">
                         <div className="d-flex">
                             <div className="col">
-                                <div className="d-flex align-items-center">
+                                <div className="search">
                                     <SearchList
-                                        className="search-list-wrapper col-7 col-md-9 col-lg-10"
+                                        className="search-list-wrapper"
                                         icon="fa-solid fa-magnifying-glass"
                                         placeholder="search"
                                         iconStyle="search-list-icon"

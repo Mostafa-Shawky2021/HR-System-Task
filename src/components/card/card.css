@@ -1,10 +1,12 @@
 .card-employee {
-    padding: 11px 5px 18px;
+    padding: 11px 5px 11px;
     box-shadow: 0 3px 15px 0 rgb(0 0 0 / 9%);
     border: 1px solid #eaeef0;
     margin-right: 10px;
     margin-bottom: 40px;
+    max-width: 95%;
 }
+
 
 .card-employee .popup-delete-content {
     background-color: #fff;
@@ -24,10 +26,17 @@
 }
 
 .card-employee .user-control {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #dddddd94;
     display: flex;
     flex-direction: column;
-    margin-right: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+@media screen and (min-width:992px) {
+    .card-employee .user-control  {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
 }
 
 .card-employee .user-control .employee-avatar {
@@ -49,7 +58,9 @@
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-
+.card-employee .user-control .control .control-icon .icon {
+    font-size: 12px;
+}
 .card-employee .user-control .control .control-icon.icon-trash:hover {
     color: #f00;
 }
@@ -59,15 +70,36 @@
 }
 
 .card-employee .employee-details {
+    padding-left: 12px;
+    padding-right: 12px;
     width: 100%;
 }
-
+@media screen and (min-width:992px) {
+    .card-employee .employee-details {
+        padding-left: 20px;
+    }
+}
+@media screen and (min-width:1280px) {
+    .card-employee .employee-details {
+        padding-left: 30px;
+    }
+}
+.card-employee .employee-details .employee-name-wrapper {
+    width: 86%;
+    overflow: hidden;
+}
 
 .card-employee .employee-details .employee-name {
     font-size: 19px;
     font-weight: 500;
     text-transform: capitalize;
     margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
+    min-width: 100%;
 }
 
 .card-employee .employee-details .job-title {
@@ -85,13 +117,25 @@
 .card-employee .employee-details .user-status {
     justify-content: space-between;
     position: relative;
+    margin-top: 10px;
+    
 }
-
-.card-employee .employee-details .user-status .submenu .submenu-parent {
+.card-employee .employee-details .user-status  .icon {
+    font-size: 12px;
+}
+.card-employee .employee-details .user-status .submenu-parent {
     position: relative;
-    z-index: 9999;
+}
+.card-employee .employee-details .user-status .submenu-parent .submenu {
+    display: none;
 }
 
+.card-employee .employee-details .user-status .submenu-parent:hover .submenu {
+    display: flex
+}
+.card-employee .employee-details .user-status .submenu-parent:hover .icon {
+    box-shadow: 1px 1px 10px rgb(0 0 0 / 31%)
+}
 .card-employee .employee-details .user-status .submenu .submenu-parent .icon {
     width: 100%;
     height: 100%;
@@ -99,9 +143,15 @@
 }
 
 .card-employee .employee-details .user-status .status {
-    padding: 3px 13px;
     border-radius: 2px;
     cursor: pointer;
+    width: 70px;
+    height: 22px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 23px;
+    padding-right: 6px;
+    padding-left: 6px;
 }
 
 .card-employee .employee-details .user-status .status.present {
@@ -128,17 +178,14 @@
 .card-employee .employee-details .user-status .icon-contact .icon {
     background: #eaeef0;
     text-align: center;
-    width: 29px;
+    width: 31px;
     border-radius: 50%;
     line-height: 28px;
     height: 29px;
     cursor: pointer;
-    -webkit-transition: all .2s;
+    /* -webkit-transition: all .2s;
     -moz-transition: all .2s;
-    transition: all .2s;
+    transition: all .2s; */
+    font-size: 11px;
 }
 
-.card-employee .employee-details .user-status .icon-contact .icon:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-}

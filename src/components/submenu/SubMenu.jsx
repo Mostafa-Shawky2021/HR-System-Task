@@ -8,9 +8,8 @@ const SubMenu = ({
     officeRole,
     officeCopiedManager,
     officeJoiningDate,
-    officeManagers
+    officeManager
 }) => {
-
 
     useEffect(() => {
         const onBodyClickSubMenu = (e) => {
@@ -40,8 +39,8 @@ const SubMenu = ({
                     <div className="office-details">
                         <p className="title">Role</p>
                         <p className="name">{officeRole}</p>
-                        <p className="secondary-title">{officeCopiedManager}</p>
-                        <p className="seconday-name">{officeManagers}</p>
+                        <p className="secondary-title">Manager</p>
+                        <p className="seconday-name">{officeManager}</p>
                     </div>
 
                 </div>
@@ -50,7 +49,6 @@ const SubMenu = ({
                         <p className="title">Copied Manager</p>
                         <p className="name">Mohamed Tarek</p>
                     </div>
-
                 </div>
             </div>
         </div>

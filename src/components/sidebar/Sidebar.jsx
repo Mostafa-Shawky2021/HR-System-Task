@@ -16,7 +16,7 @@ const Sidebar = ({ employeesCount }) => {
             document.getElementById('page-wrapper').style.width = "100%";
 
         } else {
-            // Set pagewrapper dynamic
+        
             if (windowWidth >= 0 && windowWidth <= 768) {
                 pageWrapper.style.left = '0px'
                 pageWrapper.style.width = '100%'
@@ -26,7 +26,7 @@ const Sidebar = ({ employeesCount }) => {
                 const sidebarWidth = sidebar.clientWidth;
                 const pageWrapper = document.getElementById('page-wrapper')
                 pageWrapper.style.left = `${sidebarWidth}px`
-                pageWrapper.style.width = `${(windowWidth - sidebarWidth) - 17}px`
+                pageWrapper.style.width = `${windowWidth - sidebarWidth}px`
             }
 
         }
