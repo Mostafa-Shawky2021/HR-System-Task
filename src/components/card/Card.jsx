@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Navigate } from 'react-router-dom';
 import SubMenu from '../submenu/SubMenu';
 import "./card.css"
 const Card = (
@@ -13,13 +14,11 @@ const Card = (
         officeCopiedManager,
         officeJoiningDate,
         officeManager,
+        onEditEmployee,
         onDeleteEmployee
     }) => {
     const [subMenuToggle, setSubMenuToggle] = useState(false)
-    // const [viewPort, setViewPort]  = useState(0)
-
     const subMenuWrapper = useRef(null)
-
 
     let attendanceStauts = {}
 
@@ -31,13 +30,6 @@ const Card = (
         attendanceStauts = { className: 'leave', label: 'On Leave' }
     }
 
-
-    const truncateCharacter = (text)=> {
-        if( text.length > 20 ) {
-            return text.slice(0,20) + '...'
-        } 
-        return text
-    }
     return (
         <>
 
@@ -47,17 +39,15 @@ const Card = (
                         <img src="/assets/header/useravatar.png" alt="employee-avatar" className="employee-avatar img-fluid" />
                     </div>
                     <div className="control d-flex align-items-center">
-                        <button className='control-icon'><i className="fa-solid fa-pen icon"></i></button>
+                        <button className='control-icon' onClick={()=>onEditEmployee(id)}><i className="fa-solid fa-pen icon"></i></button>
                         <button className='control-icon'><i className="fa-solid fa-pause icon"></i></button>
-                        <button className='control-icon icon-trash'><i className="fa-solid fa-trash-can icon" onClick={() => onDeleteEmployee(id)}></i></button>
+                        <button className='control-icon icon-trash' onClick={() => onDeleteEmployee(id)}><i className="fa-solid fa-trash-can icon"></i></button>
                     </div>
                 </div>
 
                 <div className="employee-details">
                     <div className="employee-name-wrapper">
-                        {/* <p className="employee-name">{truncateCharacter(name)}</p> */}
                         <p className="employee-name">{name}</p>
-
                     </div>
                     <p className="job-title">{position}</p>
                     <p className="department">{department}</p>

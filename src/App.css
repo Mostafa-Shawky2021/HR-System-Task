@@ -11,17 +11,19 @@
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
+
 }
 .page-wrapper .search {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;    
+    align-items: center;   
 }
 @media screen and (min-width:1700px) {
     .page-wrapper .search  {
-        width: 98%;
+        width: 100%;
     }
 }
+
 .page-wrapper .page {
     padding-left: 12px;
     padding-right: 12px;
@@ -46,6 +48,8 @@
     flex-grow: 1;
     margin-right: 10px;
 }
+
+
 
 
 .page-wrapper .search-list-wrapper .search-list-icon {

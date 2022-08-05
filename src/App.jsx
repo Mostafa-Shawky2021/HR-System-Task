@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import employeeData from "./data/employee.json"
 import "./index.css"
 import './App.css'
@@ -13,6 +13,7 @@ const App = () => {
 
     const [employees, setEmployees] = useState([])
     const [searchValue, setSearchValue] = useState('')
+    const [editEmployee,setEditEmployee] = useState(null)
     const [toggleFormModal, setToggleFormModal] = useState(false)
     const [closeSidebar, setCloseSidebar] = useState(false)
     const [viewPort,setViewPort] = useState(0)
@@ -31,23 +32,29 @@ const App = () => {
     })
 
     let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
+    const pageWrapper = useRef(null)
+    
     useEffect(() => {
         setEmployees(employeeData)
+        
+   
     }, [])
 
+    
     useEffect(()=>{
         setViewPort(window.innerWidth)
-        const windowOnResize = ()=> {
-            setViewPort(window.innerWidth)
-        }
-        window.addEventListener('resize',windowOnResize)
-        return ()=> {
-            window.removeEventListener('resize',windowOnResize)
-        }
-    },[])
- 
-    
+        
+        // if( closeSidebar ) {
+        //     pageWrapper.current.style.width = `100%`    
+        // } else {
+
+        //     pageWrapper.current.style.width = `${viewPort  - 106}px`
+        // }
+        
+      
+       
+
+    },[viewPort,closeSidebar])
     // reset errMsg When user Close form 
     const onCloseFormModel = (e)=> {
         e.preventDefault()
@@ -246,6 +253,12 @@ const App = () => {
 
     }
 
+    const onEditEmployee = (id) => {
+        const employee = employees.find((employee)=> employee.id === id )
+        setEditEmployee(employee)
+        setToggleFormModal(true)
+
+    }
     const onDeleteEmployee = (id) => {
         let confirmStatus = window.confirm('Are you sure you want to delete employee?')
         if (confirmStatus) {
@@ -265,11 +278,12 @@ const App = () => {
                         toggleFormModal={toggleFormModal}
                         onSubmitData={onSubmitData}
                         onCloseFormModel={onCloseFormModel}
+                        editEmployee={editEmployee}
                     />
                 )
             }
             <Sidebar employeesCount={employees.length}  setCloseSidebar={setCloseSidebar} closeSidebar={closeSidebar}/>
-            <div  id="page-wrapper" className={`page-wrapper ${!closeSidebar && viewPort > 768 ? 'toggle-page' : ''}`}>
+            <div ref={pageWrapper} className={`page-wrapper ${!closeSidebar && viewPort > 768 ? 'toggle-page' : ''}`}>
                 <Header />
                 <div className="page">
                     <div className="searh-add-wrapper">
@@ -288,6 +302,7 @@ const App = () => {
                                     employees={employees}
                                     searchValue={searchValue}
                                     onDeleteEmployee={onDeleteEmployee}
+                                    onEditEmployee={onEditEmployee}
                                 />
                             </div>
                         </div>

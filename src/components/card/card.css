@@ -1,12 +1,18 @@
 .card-employee {
-    padding: 11px 5px 11px;
+    padding: 11px 5px 7px;
     box-shadow: 0 3px 15px 0 rgb(0 0 0 / 9%);
     border: 1px solid #eaeef0;
     margin-right: 10px;
     margin-bottom: 40px;
-    max-width: 100%
+    max-width: 100%;
+    min-height: 131px;
+    position: relative;
 }
-
+@media screen and (min-width:768px) {
+    .card-employee {
+        max-width: 460px;
+    }
+}
 
 .card-employee .popup-delete-content {
     background-color: #fff;
@@ -73,6 +79,7 @@
     padding-left: 12px;
     padding-right: 12px;
     width: 100%;
+    position: relative;
 }
 @media screen and (min-width:992px) {
     .card-employee .employee-details {
@@ -100,6 +107,7 @@
     overflow: hidden;
     max-width: 200px;
     min-width: 100%;
+    color: #5c6974;
 }
 
 .card-employee .employee-details .job-title {
@@ -116,8 +124,10 @@
 
 .card-employee .employee-details .user-status {
     justify-content: space-between;
-    position: relative;
-    margin-top: 10px;
+    align-items: center;
+    position: absolute;
+    bottom: 4px;
+    width: 87%;
     
 }
 .card-employee .employee-details .user-status  .icon {

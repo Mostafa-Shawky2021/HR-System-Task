@@ -7,9 +7,10 @@ const FormModal = ({
     onSubmitData,
     setFormData,
     formData,
-    onCloseFormModel
+    onCloseFormModel,
+    editEmployee
 }) => {
-    console.log()
+   
     // toggle Dropdown modal
     const [officeNameToggle, setOfficeNameToggle] = useState(false)
     const [departmentNameToggle, setDepartmentNameToggle] = useState(false)
@@ -37,11 +38,10 @@ const FormModal = ({
             document.body.removeEventListener('keyup', onKeyPress)
         }
     }, [])
+
     // This function is get the selected from reusable drop down menu 
     const getSelectedOption = (requiredDropdown, value) => {
-
         if (requiredDropdown === 'office') {
-
             setFormData((prevState) => {
                 return {
                     ...prevState,
@@ -106,7 +106,7 @@ const FormModal = ({
             })
         }
     }
-
+    console.log(editEmployee)
     return (
         <div className='custom-modal'>
             <form className="form-modal">
@@ -125,6 +125,7 @@ const FormModal = ({
                                 <label className="form-label" htmlFor="name">Name</label>
                                 <div className="col-12">
                                     <input 
+                                        value={editEmployee ? editEmployee.name : ''}
                                         className="form-control" id="name"
                                         style={{border:formData.employeeName.errMsg ? '1px solid #f00': '' }}
                                         onChange={
@@ -132,6 +133,7 @@ const FormModal = ({
                                                 prevState.employeeName.value = e.target.value
                                                 return prevState
                                             })} />
+                                        
                                 </div>
                             </div>
 
@@ -140,6 +142,7 @@ const FormModal = ({
                                 <label className="form-label" htmlFor="date">Start Date</label>
                                 <div className="col-12" >
                                     <input 
+                                           value={editEmployee ? new Date(editEmployee.office.joiningDate) : ''}
                                            className="form-control" 
                                            id="date" 
                                            type="date"
@@ -166,6 +169,7 @@ const FormModal = ({
                                             className="form-control" 
                                             id="email" 
                                             style={{border:formData.email.errMsg ? '1px solid #f00': '' }}
+                                            value={editEmployee ? editEmployee.office.email : ''}
                                             onChange={ 
                                                 (e) => setFormData((prevState) => {
                                                 prevState.email.value = e.target.value;
@@ -279,7 +283,12 @@ const FormModal = ({
 
                     <div className="btn-wrapper">
                         <button className="btn btn-close-form" onClick={(e)=>onCloseFormModel(e)}>Cancel</button>
-                        <button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Save</button>
+                        {
+                            !editEmployee ?
+                            (<button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Save</button>)
+                             :
+                             (<button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Edit</button>)
+                        }
                     </div>
                 </div>
 

@@ -10,7 +10,8 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
         }
     },
     {
@@ -24,7 +25,9 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
+            
         }
     },
     {
@@ -38,7 +41,8 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
         }
     },
     {
@@ -52,7 +56,8 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
         }
     },
     {
@@ -66,7 +71,8 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
         }
     },
     {
@@ -80,7 +86,8 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
         }
     },
     {
@@ -94,7 +101,8 @@
             "role": "Employee",
             "copiedManager": "Mohamed Tarek",
             "joiningDate": "1/1/2020",
-            "manager": "Mohamed Tarek"
+            "manager": "Mohamed Tarek",
+            "email":"mohamed@gmail.com"
         }
     }
 ]

@@ -5,7 +5,9 @@ import './list.css'
 const List = ({
     employees,
     searchValue,
-    onDeleteEmployee }) => {
+    onEditEmployee,
+    onDeleteEmployee
+    }) => {
 
     const [filterData, setFilterData] = useState([])
 
@@ -38,6 +40,7 @@ const List = ({
                                     officeJoiningDate={employee.office.joiningDate}
                                     officeManager={employee.office.manager}
                                     onDeleteEmployee={onDeleteEmployee}
+                                    onEditEmployee={onEditEmployee}
                                 />
                             </div>
                         ))

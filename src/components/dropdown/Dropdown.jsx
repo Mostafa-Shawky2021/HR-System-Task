@@ -1,7 +1,6 @@
 import React from 'react'
 import './dropdown.css'
 const Dropdown = ({ requiredDropdown, options, getSelectedOption }) => {
-    
     const onSelectedOption = (event) => {   
         if (event.currentTarget != event.target) {
             getSelectedOption(requiredDropdown, event.target.getAttribute('value'))
