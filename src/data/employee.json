@@ -54,5 +54,47 @@
             "joiningDate": "1/1/2020",
             "manager": "Mohamed Tarek"
         }
+    },
+    {
+        "id": 5,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": "Present",
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": "Present",
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Sara Khaled Ahmed",
+        "position": "HR Head",
+        "department": "Business Development",
+        "attendance": "Present",
+        "office": {
+            "name": "Arabie localizer",
+            "role": "Employee",
+            "copiedManager": "Mohamed Tarek",
+            "joiningDate": "1/1/2020",
+            "manager": "Mohamed Tarek"
+        }
     }
 ]

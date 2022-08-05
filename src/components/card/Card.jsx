@@ -16,9 +16,13 @@ const Card = (
         onDeleteEmployee
     }) => {
     const [subMenuToggle, setSubMenuToggle] = useState(false)
-    const [viewPort, setViewPort]  = useState(0)
+    // const [viewPort, setViewPort]  = useState(0)
+
     const subMenuWrapper = useRef(null)
+
+
     let attendanceStauts = {}
+
     if (attendance === "Present") {
         attendanceStauts = { className: 'present', label: 'Present' }
     } else if (attendance === "Absent") {
@@ -26,6 +30,7 @@ const Card = (
     } else {
         attendanceStauts = { className: 'leave', label: 'On Leave' }
     }
+
 
     const truncateCharacter = (text)=> {
         if( text.length > 20 ) {

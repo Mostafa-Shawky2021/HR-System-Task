@@ -125,6 +125,7 @@
 }
 .card-employee .employee-details .user-status .submenu-parent {
     position: relative;
+    cursor: pointer;
 }
 .card-employee .employee-details .user-status .submenu-parent .submenu {
     display: none;

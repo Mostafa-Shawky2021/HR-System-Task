@@ -1,13 +1,10 @@
 .custom-modal {
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
     height: 100%;
     background-color: rgba(40, 104, 174, 0.43);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 999;
     overflow: auto;
      
@@ -18,14 +15,13 @@
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
-    padding: 8px 20px;
+    padding: 8px 20px 28px;
     margin: 10px auto;
-}
-
-@media screen and (min-width:1200px) {
-    .custom-modal .form-modal {
-        width: 1170px;
-    }
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+   
 }
 
 .custom-modal .form-modal .form-label {
@@ -75,7 +71,11 @@
     height: 3px;
     background-color: rgba(40, 104, 174, 0.43);
 }
-
+.custom-modal .form-modal .allow-work-wrapper{
+    border-bottom: 1px solid #d2d2d2;
+    margin-bottom: 11px;
+    padding-bottom: 15px;
+}
 .custom-modal .form-modal .office-info {
     margin-top: 10px;
 }

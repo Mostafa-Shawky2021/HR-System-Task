@@ -123,8 +123,10 @@ const FormModal = ({
 
                                 <span className="error">{formData.employeeName.errMsg}</span>
                                 <label className="form-label" htmlFor="name">Name</label>
-                                <div className="col-12" >
-                                    <input className="form-control" id="name"
+                                <div className="col-12">
+                                    <input 
+                                        className="form-control" id="name"
+                                        style={{border:formData.employeeName.errMsg ? '1px solid #f00': '' }}
                                         onChange={
                                             (e) => setFormData((prevState) => {
                                                 prevState.employeeName.value = e.target.value
@@ -137,8 +139,12 @@ const FormModal = ({
                                 <span className="error">{formData.startDate.errMsg}</span>
                                 <label className="form-label" htmlFor="date">Start Date</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="date" type="date"
-                                        onChange={
+                                    <input 
+                                           className="form-control" 
+                                           id="date" 
+                                           type="date"
+                                           style={{border:formData.startDate.errMsg ? '1px solid #f00': '' }}
+                                            onChange={
                                             (e) => setFormData((prevState) => {
                                                 prevState.startDate.value = e.target.value
                                                 return prevState
@@ -156,10 +162,14 @@ const FormModal = ({
                                 <span className="error">{formData.email.errMsg}</span>
                                 <label className="form-label" htmlFor="email">Email</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="email" onChange={
-                                        (e) => setFormData((prevState) => {
-                                            prevState.email.value = e.target.value;
-                                            return prevState
+                                    <input 
+                                            className="form-control" 
+                                            id="email" 
+                                            style={{border:formData.email.errMsg ? '1px solid #f00': '' }}
+                                            onChange={ 
+                                                (e) => setFormData((prevState) => {
+                                                prevState.email.value = e.target.value;
+                                                return prevState
                                         })} />
                                 </div>
                             </div>
@@ -188,15 +198,20 @@ const FormModal = ({
                             <div className="col-12 col-md-6 wrap">
                                 <span className="error">{formData.departmentName.errMsg}</span>
                                 <label className="form-label">Department</label>
-                                <div className="select-dropdown-wrapper" onClick={() => setDepartmentNameToggle(!departmentNameToggle)}>
+                                <div 
+                                    className="select-dropdown-wrapper" 
+                                     style={{border:formData.departmentName.errMsg ? '1px solid #f00' : '' }}
+                                     onClick={() => setDepartmentNameToggle(!departmentNameToggle)}>
                                     <span>{`${formData.departmentName.value ? formData.departmentName.value : 'Select'}`}</span>
                                     <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                                    {departmentNameToggle && <DropDownOption requiredDropdown="department" getSelectedOption={getSelectedOption} options={departmentOption} />}
+                                    {departmentNameToggle && <DropDownOption requiredDropdown="department" getSelectedOption={getSelectedOption} options={departmentOption}  />}
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 wrap">
                                 <label className="form-label">Office</label>
-                                <div className="select-dropdown-wrapper" onClick={() => setAttendanceNameToggle(!attendanceNameToggle)}>
+                                <div 
+                                     className="select-dropdown-wrapper"
+                                     onClick={() => setAttendanceNameToggle(!attendanceNameToggle)}>
                                     <span>{`${formData.attendanceName.value ? formData.attendanceName.value : 'Select'}`}</span>
                                     <i className="fa-solid fa-chevron-down icon-chevron"></i>
                                     {attendanceNameToggle && <DropDownOption requiredDropdown="attendance" getSelectedOption={getSelectedOption} options={attendanceOption} />}
@@ -211,7 +226,9 @@ const FormModal = ({
                         <div className="row">
                             <div className="col-12 col-md-6 wrap">
                                 <label className="form-label">Role</label>
-                                <div className="select-dropdown-wrapper" onClick={() => setRoleNameToggle(!roleNameToggle)}>
+                                <div 
+                                    className="select-dropdown-wrapper"
+                                     onClick={() => setRoleNameToggle(!roleNameToggle)}>
                                     <span>{`${formData.roleName.value ? formData.roleName.value : 'Select'}`}</span>
                                     <i className="fa-solid fa-chevron-down icon-chevron"></i>
                                     {roleNameToggle && <DropDownOption requiredDropdown="role" getSelectedOption={getSelectedOption} options={roleOption} />}
@@ -220,7 +237,10 @@ const FormModal = ({
                             <div className="col-12 col-md-6 wrap">
                                 <span className="error">{formData.positionName.errMsg}</span>
                                 <label className="form-label">Position</label>
-                                <div className="select-dropdown-wrapper" onClick={() => setPositionToggle(!positionToggle)}>
+                                <div 
+                                     className="select-dropdown-wrapper"
+                                     style={{border:formData.positionName.errMsg ? '1px solid #f00' : ''}}
+                                     onClick={() => setPositionToggle(!positionToggle)}>
                                     <span>{`${formData.positionName.value ? formData.positionName.value : 'Select'}`}</span>
                                     <i className="fa-solid fa-chevron-down icon-chevron"></i>
                                     {positionToggle && <DropDownOption requiredDropdown="position" getSelectedOption={getSelectedOption} options={positionOption} />}
@@ -236,7 +256,9 @@ const FormModal = ({
                             <div className="col-6 wrap">
                                 {/* <span className="error">hello</span> */}
                                 <label className="form-label">Direct Manger</label>
-                                <div className="select-dropdown-wrapper" onClick={() => setDirectManagerToggle(!directManagerToggle)}>
+                                <div 
+                                    className="select-dropdown-wrapper" 
+                                    onClick={() => setDirectManagerToggle(!directManagerToggle)}>
                                     <span>{`${formData.directManagerName.value ? formData.directManagerName.value : 'Select'}`}</span>
                                     <i className="fa-solid fa-chevron-down icon-chevron"></i>
                                     {directManagerToggle && <DropDownOption requiredDropdown="directmanager" getSelectedOption={getSelectedOption} options={directManagerOption} />}

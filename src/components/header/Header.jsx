@@ -3,7 +3,7 @@ import "./header.css"
 const Header = () => {
 
     return (
-        <header className="header d-flex align-items-center" id="header">
+        <header className="header d-flex" id="header">
             <div className="header-content d-flex ms-auto align-items-center">
                 <p className="date">Thuresday,03 Oct 02:08:07 PM</p>
                 <div className="signin-wrapper">

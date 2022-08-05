@@ -1,13 +1,14 @@
 .header {
     background-color: #fff;
-    padding-top: 10px;
     flex-grow: 1;
     height: 79px;
     width: 100%;
+    align-items: flex-start;
+    padding-top: 17px;
 }
 
 .header .header-content {
-    gap: 36px;
+    gap: 26px;
 
 }
 
@@ -16,6 +17,8 @@
     color: var(--primary-typography);
     font-weight: 500;
     display: none;
+    margin-right: 15px;
+    font-size: 14px;
 }
 
 @media screen and (min-width:768px) {
@@ -25,10 +28,10 @@
 }
 
 .header .header-content .btn-signin {
-    background-color: var(--secondary-color);
+    background-color: #269f0f;
     color: #fff;
     padding: 2px 24px;
-    font-size: 14px;
+    font-size: 13px;
     display: none;
 }
 
@@ -42,6 +45,10 @@
     position: relative;
     display: none;
     cursor: pointer;
+    border-right: 1px solid #e8e4e4;
+    border-left: 1px solid #e8e4e4;
+    padding-right: 14px;
+    padding-left: 14px;
 }
 
 @media screen and (min-width:768px) {
@@ -53,16 +60,16 @@
 .header .header-content .notification-wrapper .notification-count {
     content: '';
     position: absolute;
-    right: -7px;
+    right: 7px;
     top: -8px;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: var(--secondary-color);
     color: #fff;
     font-size: 11px;
     text-align: center;
-    line-height: 17px;
+    line-height: 16px;  
 }
 
 .header .header-content .notification-wrapper .icon-notification {
@@ -83,13 +90,14 @@
 
 @media screen and (min-width:992px) {
     .header .header-content .user-info-wrapper {
-        margin-right: 50px;
+        margin-right: 61px;
+        margin-left: -11px;
     }
 }
 
 .header .header-content .user-info-wrapper .avatar {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .header .header-content .user-info-wrapper .user-name {

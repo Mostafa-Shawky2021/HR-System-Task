@@ -14,7 +14,8 @@ const App = () => {
     const [employees, setEmployees] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [toggleFormModal, setToggleFormModal] = useState(false)
-    const [viewPort, setViewPort] = useState(0)
+    const [closeSidebar, setCloseSidebar] = useState(false)
+    const [viewPort,setViewPort] = useState(0)
 
     // Form data 
     const [formData, setFormData] = useState({
@@ -27,36 +28,26 @@ const App = () => {
         roleName: { value: '', errMsg: '', validate: true },
         positionName: { value: '', errMsg: '', validate: false },
         directManagerName: { value: '', errMsg: '', validate: true },
-
     })
 
     let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     useEffect(() => {
+        setEmployees(employeeData)
+    }, [])
 
-        // Set pagewrapper dynamic
-        const windowWidth = window.innerWidth;
-        const sidebar = document.getElementById('sidebar')
-        const sidebarWidth = sidebar.clientWidth;
-        const pageWrapper = document.getElementById('page-wrapper')
-
-        const onBodyResize = ()=> {
+    useEffect(()=>{
+        setViewPort(window.innerWidth)
+        const windowOnResize = ()=> {
             setViewPort(window.innerWidth)
         }
-
-        window.addEventListener('resize',onBodyResize)
-
-        // check if the window in xs,sm,md
-        if (windowWidth >= 0 && windowWidth <= 768) {
-            pageWrapper.style.left = '0px'
-            pageWrapper.style.width = '100%'
-        } else {
-            pageWrapper.style.left = `${sidebarWidth}px`
-            pageWrapper.style.width = `${windowWidth - sidebarWidth}px`
+        window.addEventListener('resize',windowOnResize)
+        return ()=> {
+            window.removeEventListener('resize',windowOnResize)
         }
-        setEmployees(employeeData)
-    }, [viewPort])
-
+    },[])
+ 
+    
     // reset errMsg When user Close form 
     const onCloseFormModel = (e)=> {
         e.preventDefault()
@@ -255,7 +246,6 @@ const App = () => {
 
     }
 
-    
     const onDeleteEmployee = (id) => {
         let confirmStatus = window.confirm('Are you sure you want to delete employee?')
         if (confirmStatus) {
@@ -278,8 +268,8 @@ const App = () => {
                     />
                 )
             }
-            <Sidebar employeesCount={employees.length} />
-            <div className="page-wrapper" id="page-wrapper">
+            <Sidebar employeesCount={employees.length}  setCloseSidebar={setCloseSidebar} closeSidebar={closeSidebar}/>
+            <div  id="page-wrapper" className={`page-wrapper ${!closeSidebar && viewPort > 768 ? 'toggle-page' : ''}`}>
                 <Header />
                 <div className="page">
                     <div className="searh-add-wrapper">

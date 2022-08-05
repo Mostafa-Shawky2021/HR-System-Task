@@ -11,6 +11,9 @@
     --font-roboto: 'Roboto', sans-serif;
     --font-size-default: 15px;
 }
+html {
+    height: 100vh;
+}
 
 * {
     box-sizing: border-box;
@@ -19,6 +22,9 @@
 body {
     font-family: var(--font-roboto) !important;
     font-size: var(--font-size-default) !important;
+    height: 100%;
+    background-color: var(--main-color) !important;
+    /* overflow: hidden; */
 }
 
 ul,
