@@ -32,7 +32,6 @@ const Card = (
 
     return (
         <>
-
             <div className="card-employee d-flex">
                 <div className="user-control">
                     <div className="text-center">

@@ -21,21 +21,23 @@
     padding: 8px 20px 28px;
     margin: 10px auto;
     min-height: 650px;
-    /* position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); */
-
+    flex-basis: 90%;
+    max-width: 1170px;
 }
 
 .custom-modal .form-modal .form-label {
     margin: 0px;
     font-size: 14px;
+    margin-bottom: 4px;
 }
 
 .custom-modal .form-modal .form-control {
     color: #8f9da9;
     font-size: 14px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 5px;
+    border: 1px solid rgba(170, 170, 170, 0.84);
 }
 
 .custom-modal .form-modal .error {

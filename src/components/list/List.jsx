@@ -10,7 +10,6 @@ const List = ({
 }) => {
 
     const [filterData, setFilterData] = useState([])
-
     useEffect(() => {
         if (searchValue.length > 0) {
             let filter = employees.filter((employee) => employee.name.toLowerCase().includes(searchValue))

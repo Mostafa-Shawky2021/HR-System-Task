@@ -11,19 +11,6 @@ const SubMenu = ({
     officeManager
 }) => {
 
-    useEffect(() => {
-        const onBodyClickSubMenu = (e) => {
-            if (subMenuElementRef.current.contains(e.target)) {
-                return
-            }
-            setSubMenuToggle(false)
-        }
-        document.body.addEventListener('click', onBodyClickSubMenu);
-        return () => {
-            document.body.removeEventListener('click', onBodyClickSubMenu);
-        }
-
-    }, [])
     return (
         <div className="submenu-wrapper">
             <div className={`${subMenuToggle ? 'animate-submenu' : ''}  submenu`}>
