@@ -7,7 +7,7 @@ const List = ({
     searchValue,
     onEditEmployee,
     onDeleteEmployee
-    }) => {
+}) => {
 
     const [filterData, setFilterData] = useState([])
 
@@ -23,34 +23,37 @@ const List = ({
 
     return (
         <div className="wrapper-list">
-            <div className="row g-0">
-                {
-                    filterData.length ? (
-                        filterData.map((employee, index) => (
-                            <div className="col-12 col-md-6 col-xl-4" key={index}>
-                                <EmployeeCard
-                                    id={employee.id}
-                                    name={employee.name}
-                                    position={employee.position}
-                                    department={employee.department}
-                                    attendance={employee.attendance}
-                                    officeName={employee.office.name}
-                                    officeRole={employee.office.role}
-                                    officeCopiedManager={employee.office.copiedManager}
-                                    officeJoiningDate={employee.office.joiningDate}
-                                    officeManager={employee.office.manager}
-                                    onDeleteEmployee={onDeleteEmployee}
-                                    onEditEmployee={onEditEmployee}
-                                />
-                            </div>
-                        ))
+            <div className="custom-container">
+                <div className="row g-0">
+                    {
+                        filterData.length ? (
+                            filterData.map((employee, index) => (
+                                <div className="col-12 col-md-6 col-xl-4" key={index}>
+                                    <EmployeeCard
+                                        id={employee.id}
+                                        name={employee.name}
+                                        position={employee.position}
+                                        department={employee.department}
+                                        attendance={employee.attendance}
+                                        officeName={employee.office.name}
+                                        officeRole={employee.office.role}
+                                        officeCopiedManager={employee.office.copiedManager}
+                                        officeJoiningDate={employee.office.joiningDate}
+                                        officeManager={employee.office.manager}
+                                        onDeleteEmployee={onDeleteEmployee}
+                                        onEditEmployee={onEditEmployee}
+                                    />
+                                </div>
+                            ))
 
-                    ) : (
-                        <p>Sorry no employee to show</p>
-                    )
-                }
+                        ) : (
+                            <p>Sorry no employee to show</p>
+                        )
+                    }
 
+                </div>
             </div>
+
 
 
         </div>

@@ -1,16 +1,16 @@
 .card-employee {
-    padding: 11px 5px 7px;
     box-shadow: 0 3px 15px 0 rgb(0 0 0 / 9%);
     border: 1px solid #eaeef0;
     margin-right: 10px;
     margin-bottom: 40px;
-    max-width: 100%;
-    min-height: 131px;
+    min-height: 123px;
     position: relative;
+    padding: 11px 13px 11px 18px;
 }
+
 @media screen and (min-width:768px) {
     .card-employee {
-        max-width: 460px;
+        max-width: 400px
     }
 }
 
@@ -35,19 +35,13 @@
     border-right: 1px solid #dddddd94;
     display: flex;
     flex-direction: column;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-@media screen and (min-width:992px) {
-    .card-employee .user-control  {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+    padding-right: 20px;
 }
 
+
 .card-employee .user-control .employee-avatar {
-    width: 71px;
-    height: 71px;
+    width: 70px;
+    height: 70px;
 }
 
 .card-employee .user-control .control {
@@ -64,9 +58,11 @@
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 .card-employee .user-control .control .control-icon .icon {
     font-size: 12px;
 }
+
 .card-employee .user-control .control .control-icon.icon-trash:hover {
     color: #f00;
 }
@@ -81,23 +77,26 @@
     width: 100%;
     position: relative;
 }
+
 @media screen and (min-width:992px) {
     .card-employee .employee-details {
         padding-left: 20px;
     }
 }
+
 @media screen and (min-width:1280px) {
     .card-employee .employee-details {
-        padding-left: 30px;
+        padding-left: 27px;
     }
 }
+
 .card-employee .employee-details .employee-name-wrapper {
     width: 86%;
     overflow: hidden;
 }
 
 .card-employee .employee-details .employee-name {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 500;
     text-transform: capitalize;
     margin-bottom: 0px;
@@ -126,17 +125,19 @@
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    bottom: 4px;
+    bottom: -2px;
     width: 87%;
-    
 }
-.card-employee .employee-details .user-status  .icon {
+
+.card-employee .employee-details .user-status .icon {
     font-size: 12px;
 }
+
 .card-employee .employee-details .user-status .submenu-parent {
     position: relative;
     cursor: pointer;
 }
+
 .card-employee .employee-details .user-status .submenu-parent .submenu {
     display: none;
 }
@@ -144,9 +145,11 @@
 .card-employee .employee-details .user-status .submenu-parent:hover .submenu {
     display: flex
 }
+
 .card-employee .employee-details .user-status .submenu-parent:hover .icon {
     box-shadow: 1px 1px 10px rgb(0 0 0 / 31%)
 }
+
 .card-employee .employee-details .user-status .submenu .submenu-parent .icon {
     width: 100%;
     height: 100%;
@@ -184,7 +187,7 @@
 
 .card-employee .employee-details .user-status .icon-contact {
     display: flex;
-    gap: 11px;
+    gap: 6px;
 }
 
 .card-employee .employee-details .user-status .icon-contact .icon {
@@ -200,4 +203,3 @@
     transition: all .2s; */
     font-size: 11px;
 }
-

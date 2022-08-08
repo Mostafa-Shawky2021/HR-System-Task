@@ -1,12 +1,10 @@
 import React from 'react';
 import './sidebar.css'
 
-const Sidebar = ({ employeesCount,setCloseSidebar,closeSidebar }) => {
-
-
+const Sidebar = ({ employeesCount, setCloseSidebar, closeSidebar }) => {
     return (
         <aside className={`${closeSidebar ? 'sidebar-close' : ''} sidebar`} id="sidebar">
-            <div className="gear-icon" onClick={()=>setCloseSidebar(!closeSidebar)}>
+            <div className="gear-icon" onClick={() => setCloseSidebar(!closeSidebar)}>
                 <i className="fa-solid fa-gear icon"></i>
             </div>
             <ul className="list-unstyled list ">

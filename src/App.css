@@ -1,47 +1,50 @@
 .page-wrapper {
     background-color: var(--main-color);
-    position: absolute;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     height: 100%;
+    position: relative;
+    left: 0px;
 }
+
 .page-wrapper.toggle-page {
-    left: 106px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-
+    left: 106px;
 }
+
 .page-wrapper .search {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;   
+    align-items: center;
 }
+
 @media screen and (min-width:1700px) {
-    .page-wrapper .search  {
+    .page-wrapper .search {
         width: 100%;
     }
 }
 
 .page-wrapper .page {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:900px) {
     .page-wrapper .page {
-        padding-left: 39px;
+        padding-left: 36px;
         padding-right: 10px;
     }
 }
 
 .page-wrapper .searh-add-wrapper {
     margin-top: 35px;
+    max-width: 1762px;
 }
 
 .page-wrapper .search-list-wrapper {
-    border: 5px solid #fff;
     border-radius: 5px;
     background-color: #fff;
     padding-left: 32px;
@@ -49,21 +52,19 @@
     margin-right: 10px;
 }
 
-
-
-
 .page-wrapper .search-list-wrapper .search-list-icon {
     position: absolute;
     left: 27px;
     top: 50%;
     transform: translateY(-50%);
     color: #23aaeb;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .page-wrapper .search-list-wrapper input {
-    padding: 3px 42px;
+    padding: 4px 29px;
     color: #707070;
+    border-radius: 5px;
 }
 
 .page-wrapper .search-list-wrapper input::placeholder {
@@ -72,20 +73,24 @@
     font-weight: 400;
 
 }
-@media screen and ( max-width: 576px) {
-    .page-wrapper .search {     
+
+@media screen and (max-width: 576px) {
+    .page-wrapper .search {
         justify-content: center;
     }
 }
+
 .page-wrapper .btn-add {
     background-color: #2764ac;
     color: #fff;
     border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
     margin-right: 10px;
-    margin-top: 10px;
+    padding: 3px 11px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
 }
+
 @media screen and (min-width:480px) {
     .page-wrapper .btn-add {
         margin-left: auto;
@@ -102,6 +107,6 @@
 }
 
 .page-wrapper .btn-add .icon-add {
-    margin-right: 10px;
-
+    margin-right: 8px;
+    font-size: 16px;
 }
