@@ -148,7 +148,7 @@ const App = () => {
         } else {
             formData.employeeName.errMsg = ''
             formData.employeeName.validate = true 
-            console.log(formData)
+       
             // setFormData((prevState) => {
             //     return {
             //         ...prevState,
@@ -278,14 +278,9 @@ const App = () => {
             // False meaning there is error in input
             return value.validate === false
         })
-        console.log(formStatusIterate)
-        if( formStatusIterate ) {
-            setFormStatus(false)
-        } else {
-            setFormStatus(true)
-        }
+        
     
-        if (formStatus) {
+        if (!formStatusIterate) {
             let employee = {
                 id: employees.length + 1,
                 name: formData.employeeName.value,
@@ -301,7 +296,6 @@ const App = () => {
                     manager: formData.directManagerName.value
                 }
             }
-
             for (let key in formData) {
                 setFormData((prevState) => {
                     return {
@@ -331,9 +325,8 @@ const App = () => {
 
             setToggleFormModal(false)
             setEmployees((prevState) => [...prevState, employee])
-            setFormStatus(false)
     }
-
+            setFormData({...formData})
     }
     const onEditEmployee = (id) => {
         const employee = employees.find((employee) => employee.id === id)
