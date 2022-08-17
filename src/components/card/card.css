@@ -1,14 +1,14 @@
 .card-employee {
     box-shadow: 0 3px 15px 0 rgb(0 0 0 / 9%);
     border: 1px solid #eaeef0;
-    margin-right: 10px;
     margin-bottom: 40px;
     min-height: 123px;
     position: relative;
     padding: 11px 13px 11px 18px;
+    margin-right: 10px;
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:1700px) {
     .card-employee {
         max-width: 400px
     }

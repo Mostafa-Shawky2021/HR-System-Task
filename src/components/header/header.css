@@ -9,7 +9,6 @@
 
 .header .header-content {
     gap: 26px;
-
 }
 
 .header .header-content .date {
@@ -69,7 +68,7 @@
     color: #fff;
     font-size: 11px;
     text-align: center;
-    line-height: 16px;  
+    line-height: 16px;
 }
 
 .header .header-content .notification-wrapper .icon-notification {
@@ -81,18 +80,7 @@
     color: var(--soft-gray-color);
     position: relative;
     cursor: pointer;
-    margin-right: 50px;
-}
-
-@media screen and (min-width:576px) {
-    .header .header-content .user-info-wrapper {}
-}
-
-@media screen and (min-width:992px) {
-    .header .header-content .user-info-wrapper {
-        margin-right: 61px;
-        margin-left: -11px;
-    }
+    margin-right: 37px;
 }
 
 .header .header-content .user-info-wrapper .avatar {

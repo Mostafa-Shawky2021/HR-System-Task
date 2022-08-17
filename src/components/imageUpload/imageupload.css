@@ -1,0 +1,33 @@
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 2px dashed rgba(170, 170, 170, 0.84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 121px;
+    overflow: hidden;
+}
+
+.image-wrapper .image-upload {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 99;
+}
+
+.image-wrapper .text-upload {
+    color: #5c6974;
+    text-transform: uppercase;
+}
+
+.image-wrapper .employee-image {
+    max-width: 100%;
+    object-fit: cover;
+    padding: 5px;
+}

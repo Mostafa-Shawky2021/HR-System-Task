@@ -6,7 +6,7 @@
     height: 100%;
     background-color: rgba(40, 104, 174, 0.43);
     z-index: 999;
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,28 +14,29 @@
 }
 
 .custom-modal .form-modal {
-    max-width: 1170px;
+    width: 95%;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
-    padding: 8px 20px 28px;
+    padding: 10px 0px 28px 17px;
     margin: 10px auto;
-    min-height: 650px;
-    /* position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); */
-
+    max-height: 658px;
+    max-width: 1170px;
+    overflow: auto;
+    height: 98vh;
 }
 
 .custom-modal .form-modal .form-label {
     margin: 0px;
     font-size: 14px;
+    color: #313030
 }
 
 .custom-modal .form-modal .form-control {
     color: #8f9da9;
     font-size: 14px;
+    padding-top: 4px;
+    padding-bottom: 3px;
 }
 
 .custom-modal .form-modal .error {
@@ -43,6 +44,10 @@
     right: 10px;
     top: -5px;
     color: #f00;
+}
+
+.custom-modal .form-modal .emp-info {
+    margin-bottom: 1.125rem;
 }
 
 .custom-modal .form-modal .emp-info .img {
@@ -64,6 +69,7 @@
     color: #23aaeb;
     font-weight: bold;
     position: relative;
+    margin-bottom: 1.3rem;
 }
 
 .custom-modal .form-modal .person-info-title::after {
@@ -83,26 +89,8 @@
 }
 
 .custom-modal .form-modal .office-info {
-    margin-top: 10px;
-}
-
-.custom-modal .form-modal .office-info .select-dropdown-wrapper {
-    position: relative;
-    border-radius: 5px;
-    border: 1px solid rgb(170 170 170 / 59%);
-    padding: 5px 9px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    user-select: none;
-    color: #8f9da9;
-    font-size: 14px;
-}
-
-.custom-modal .form-modal .office-info .select-dropdown-wrapper .icon-chevron {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-top: 10px px;
+    padding-right: 23px;
 }
 
 .custom-modal .form-modal .work-from-home .form-label {
@@ -110,6 +98,7 @@
     font-weight: 500;
     user-select: none;
     cursor: pointer;
+    color: #313030;
 }
 
 .custom-modal .form-modal .btn-wrapper {
@@ -119,7 +108,6 @@
 }
 
 .custom-modal .form-modal .btn-wrapper .btn {
-
     background: red;
     color: #ffff;
     width: 94px;

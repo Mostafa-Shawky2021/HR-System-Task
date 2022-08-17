@@ -1,31 +1,80 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './formModal.css'
+import useForm from '../../lib/useForm'
 import DropDownOption from "../dropdown/Dropdown"
+import ImageUpload from '../imageUpload/ImageUpload'
+import './formModal.css'
 const FormModal = ({
     setToggleFormModal,
     toggleFormModal,
-    onSubmitData,
-    setFormData,
-    formData,
     onCloseFormModel,
-    editEmployee
+    setEmployees
 }) => {
-   
-    // toggle Dropdown modal
-    const [officeNameToggle, setOfficeNameToggle] = useState(false)
-    const [departmentNameToggle, setDepartmentNameToggle] = useState(false)
-    const [attendanceNameToggle, setAttendanceNameToggle] = useState(false)
-    const [roleNameToggle, setRoleNameToggle] = useState(false)
-    const [positionToggle, setPositionToggle] = useState(false)
-    const [directManagerToggle, setDirectManagerToggle] = useState(false)
 
-    // Options displayed in dropdown menu
-    const [officeOption, setOfficeOption] = useState(['Arabic Localizer', 'Arabic Localizer Alex'])
-    const [departmentOption, setDepartmentOption] = useState(['Hr Head', 'Accountant', 'Development'])
-    const [attendanceOption, setAttendanceOption] = useState(['Present', 'Absent', 'on Leave'])
-    const [roleOption, setRoleOption] = useState(['employee', 'manager'])
-    const [positionOption, setPositionOption] = useState(['Project Manager', 'HR'])
-    const [directManagerOption, setDirectManagerOption] = useState(["Nabil Mahmoud", "Ahmed Mohamed"])
+    const [dropDownSelected, setDropDownSelected] = useState({})
+    const [handleSubmit, handleChange, errorForm] = useForm({
+        name: {
+            required: {
+                validate: true,
+                errMsg: 'the input is required',
+            },
+            minLength: {
+                validate: true,
+                value: 5,
+                errMsg: 'the input must greater than 5 character',
+            },
+            maxLength: {
+                validate: true,
+                value: 10,
+                errMsg: 'the input must less than 10 character'
+            },
+            pattern: {
+                validate: true,
+                value: /[A-Za-z]+/,
+                errMsg: 'the input must contain only caracter',
+
+            }
+        },
+        startDate: {
+            required: {
+                validate: true,
+                errMsg: 'date is required',
+            }
+        },
+        phone: {
+            required: {
+                validate: true,
+            },
+            pattern: {
+                validate: true,
+                value: /\d+/,
+                errMsg: 'this input must contain only digits'
+            }
+        },
+        email: {
+            required: {
+                validate: true,
+                errMsg: 'the input is required',
+            },
+            pattern: {
+                validate: true,
+                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                errMsg: 'sorry email not valid'
+            }
+
+        },
+        officeName: {
+            required: {
+                validate: true,
+                errMsg: 'Sorry office Name is required'
+            }
+        },
+        department: {
+            required: {
+                validate: true,
+                errMsg: 'Sorry departmen is required'
+            }
+        }
+    })
 
     useEffect(() => {
         const onKeyPress = (e) => {
@@ -39,142 +88,105 @@ const FormModal = ({
         }
     }, [])
 
-    // This function is get the selected from reusable drop down menu 
-    const getSelectedOption = (requiredDropdown, value) => {
-        if (requiredDropdown === 'office') {
-            setFormData((prevState) => {
-                return {
-                    ...prevState,
-                    officeName: {
-                        ...prevState.officeName,
-                        value: value
-                    }
-                }
+    const officeOptions = ['Arabic Localizer', 'Arabic Localizer Alex']
+    const attendanceOptions = ['Present', 'Absent', 'on Leave']
+    const departmentOptions = ['Hr Head', 'Accountant', 'Development']
+    const roleOptions = ['employee', 'manager']
+    const positionOptions = ['project Manager', 'HR']
+    const directMnagerOptions = ['Nabil Mahmoud', 'Ahmed Mohamed']
 
-            })
-        } else if (requiredDropdown === 'department') {
-            setFormData((prevState) => {
-                return {
-                    ...prevState,
-                    departmentName: {
-                        ...prevState.departmentName,
-                        value: value
-                    }
-                }
-            })
-        } else if (requiredDropdown === 'attendance') {
-            setFormData((prevState) => {
-                return {
-                    ...prevState,
-                    attendanceName: {
-                        ...prevState.attendanceName,
-                        value: value
-                    }
-                }
-            })
-        } else if (requiredDropdown === 'role') {
-            setFormData((prevState) => {
-                return {
-                    ...prevState,
-                    roleName: {
-                        ...prevState.roleName,
-                        value: value
-                    }
-                }
 
-            })
-        } else if (requiredDropdown === 'position') {
-            setFormData((prevState) => {
-                return {
-                    ...prevState,
-                    positionName: {
-                        ...prevState.positionName,
-                        value: value
-                    }
+    const onSubmitData = (data, formStatus) => {
+        // this function will called with closure function which will be the event handler and will 
+        // pass the form form data and form status    
+        if (formStatus) {
+            let employee = {
+                name: data.name,
+                position: data.position,
+                department: data.department,
+                attendance: data.attendance,
+                office: {
+                    name: data.officeName,
+                    role: data.role,
+                    copiedManager: data.directManager,
+                    joiningDate: data.startDate,
+                    manager: data.directManager,
+                    email: data.email
                 }
-
+            }
+            setEmployees((prevState) => {
+                return [...prevState, employee]
             })
-        } else if (requiredDropdown === 'directmanager') {
-            setFormData((prevState) => {
-                return {
-                    ...prevState,
-                    directManagerName: {
-                        ...prevState.directManagerName,
-                        value: value
-                    }
-                }
-            })
+            setToggleFormModal(false)
         }
     }
-    console.log(editEmployee)
+
+    const handleDropDownSelected = (event) => {
+        let selectName = event.currentTarget.getAttribute('name')
+        let selectedOption = event.target.getAttribute('value')
+
+        // pass this element to form hook
+        handleChange({ [selectName]: selectedOption })
+        // this will set the selected item from dropdown 
+        setDropDownSelected({ ...dropDownSelected, [selectName]: selectedOption })
+
+    }
+
     return (
         <div className='custom-modal'>
-            <form className="form-modal">
+            <form className="form-modal" onSubmit={handleSubmit(onSubmitData)}>
                 {/* employee info */}
                 <div className="emp-info">
                     <h3 className="title">new employee</h3>
                     <p className="person-info-title">Personal Info</p>
                     <div className="row">
                         <div className="col-12 col-md-4">
-                            <div className="img" style={{ textAlign: 'center', lineHeight: '100px', fontSize: '2rem', fontWeigt: 'bold' }}>Soon</div>
+                            <ImageUpload />
                         </div>
                         <div className="col-12 col-md-8 row">
-                            <div className="mb-2 col-12 col-md-6 wrap">
-
-                                <span className="error">{formData.employeeName.errMsg}</span>
+                            <div className="mb-3 col-12 col-md-6 wrap">
+                                <span className="error">{errorForm?.name}</span>
                                 <label className="form-label" htmlFor="name">Name</label>
                                 <div className="col-12">
-                                    <input 
-                                        value={editEmployee ? editEmployee.name : ''}
-                                        className="form-control" id="name"
-                                        style={{border:formData.employeeName.errMsg ? '1px solid #f00': '' }}
-                                        onChange={
-                                            (e) => setFormData((prevState) => {
-                                                prevState.employeeName.value = e.target.value
-                                                return prevState
-                                            })} />
-                                        
+                                    <input
+                                        className="form-control"
+                                        id="name"
+                                        onChange={handleChange('name')}
+                                    />
                                 </div>
                             </div>
 
-                            <div className="mb-2 col-12 col-md-6  wrap">
-                                <span className="error">{formData.startDate.errMsg}</span>
+                            <div className="mb-3 col-12 col-md-6  wrap">
+                                <span className="error">{errorForm?.startDate}</span>
                                 <label className="form-label" htmlFor="date">Start Date</label>
                                 <div className="col-12" >
-                                    <input 
-                                           value={editEmployee ? new Date(editEmployee.office.joiningDate) : ''}
-                                           className="form-control" 
-                                           id="date" 
-                                           type="date"
-                                           style={{border:formData.startDate.errMsg ? '1px solid #f00': '' }}
-                                            onChange={
-                                            (e) => setFormData((prevState) => {
-                                                prevState.startDate.value = e.target.value
-                                                return prevState
-                                            })} />
+                                    <input
+                                        className="form-control"
+                                        id="date"
+                                        name="date"
+                                        type="date"
+                                        onChange={handleChange('startDate')}
+                                    />
                                 </div>
                             </div>
 
-                            <div className="mb-2 col-12 col-md-6 wrap">
+                            <div className="mb-3 col-12 col-md-6 wrap">
+                                <span className="error">{errorForm?.phone}</span>
                                 <label className="form-label" htmlFor="phone">Phone</label>
                                 <div className="col-12" >
-                                    <input className="form-control" id="phone" />
+                                    <input className="form-control" id="phone" onChange={handleChange('phone')} />
                                 </div>
                             </div>
-                            <div className="mb-2 col-12 col-md-6 wrap">
-                                <span className="error">{formData.email.errMsg}</span>
+                            <div className="mb-3 col-12 col-md-6 wrap">
+                                <span className="error">{errorForm?.email}</span>
                                 <label className="form-label" htmlFor="email">Email</label>
                                 <div className="col-12" >
-                                    <input 
-                                            className="form-control" 
-                                            id="email" 
-                                            style={{border:formData.email.errMsg ? '1px solid #f00': '' }}
-                                            value={editEmployee ? editEmployee.office.email : ''}
-                                            onChange={ 
-                                                (e) => setFormData((prevState) => {
-                                                prevState.email.value = e.target.value;
-                                                return prevState
-                                        })} />
+                                    <input
+                                        className="form-control"
+                                        id="email"
+                                        name="email"
+                                        onChange={handleChange('email')}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -184,15 +196,23 @@ const FormModal = ({
                 {/* office info */}
                 <div className="office-info">
                     <p className="person-info-title">Office Info</p>
-
                     {/* officename */}
                     <div className="mb-2 wrap">
                         <label className="form-label">Office</label>
-                        <div className="select-dropdown-wrapper" onClick={() => setOfficeNameToggle(!officeNameToggle)}>
-                            <span>{`${formData.officeName.value ? formData.officeName.value : 'Name'}`}</span>
-                            <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                            {officeNameToggle && <DropDownOption requiredDropdown="office" getSelectedOption={getSelectedOption} options={officeOption} />}
-                        </div>
+                        <span className="error">{errorForm?.officeName}</span>
+                        <DropDownOption
+                            name='officeName'
+                            onClick={handleDropDownSelected}
+                            dropDownSelected={dropDownSelected.officeName}
+                            options={officeOptions}
+                        >
+                            {officeOptions.map((option) => (
+                                <li key={option} className='submenu-item' value={option}>
+                                    {option}
+                                </li>))}
+                        </DropDownOption>
+
+
                     </div>
                     {/* end officename */}
 
@@ -200,26 +220,34 @@ const FormModal = ({
                     <div className="mb-2 ">
                         <div className="row">
                             <div className="col-12 col-md-6 wrap">
-                                <span className="error">{formData.departmentName.errMsg}</span>
+                                <span className="error">{errorForm?.department}</span>
                                 <label className="form-label">Department</label>
-                                <div 
-                                    className="select-dropdown-wrapper" 
-                                     style={{border:formData.departmentName.errMsg ? '1px solid #f00' : '' }}
-                                     onClick={() => setDepartmentNameToggle(!departmentNameToggle)}>
-                                    <span>{`${formData.departmentName.value ? formData.departmentName.value : 'Select'}`}</span>
-                                    <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                                    {departmentNameToggle && <DropDownOption requiredDropdown="department" getSelectedOption={getSelectedOption} options={departmentOption}  />}
-                                </div>
+                                <DropDownOption
+                                    onClick={handleDropDownSelected}
+                                    dropDownSelected={dropDownSelected.department}
+                                    options={departmentOptions}
+                                    name='department'
+                                >
+                                    {departmentOptions.map((option) => (
+                                        <li key={option} className='submenu-item' value={option}>
+                                            {option}
+                                        </li>))}
+                                </DropDownOption>
                             </div>
                             <div className="col-12 col-md-6 wrap">
-                                <label className="form-label">Office</label>
-                                <div 
-                                     className="select-dropdown-wrapper"
-                                     onClick={() => setAttendanceNameToggle(!attendanceNameToggle)}>
-                                    <span>{`${formData.attendanceName.value ? formData.attendanceName.value : 'Select'}`}</span>
-                                    <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                                    {attendanceNameToggle && <DropDownOption requiredDropdown="attendance" getSelectedOption={getSelectedOption} options={attendanceOption} />}
-                                </div>
+                                <label className="form-label">Attendance Profile</label>
+                                <DropDownOption
+                                    onClick={handleDropDownSelected}
+                                    dropDownSelected={dropDownSelected.attendance}
+                                    options={attendanceOptions}
+                                    name='attendance'
+                                >
+                                    {attendanceOptions.map((option) => (
+                                        <li key={option} className='submenu-item' value={option}>
+                                            {option}
+                                        </li>))}
+                                </DropDownOption>
+
                             </div>
                         </div>
                     </div>
@@ -230,25 +258,32 @@ const FormModal = ({
                         <div className="row">
                             <div className="col-12 col-md-6 wrap">
                                 <label className="form-label">Role</label>
-                                <div 
-                                    className="select-dropdown-wrapper"
-                                     onClick={() => setRoleNameToggle(!roleNameToggle)}>
-                                    <span>{`${formData.roleName.value ? formData.roleName.value : 'Select'}`}</span>
-                                    <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                                    {roleNameToggle && <DropDownOption requiredDropdown="role" getSelectedOption={getSelectedOption} options={roleOption} />}
-                                </div>
+                                <DropDownOption
+                                    onClick={handleDropDownSelected}
+                                    dropDownSelected={dropDownSelected.role}
+                                    options={roleOptions}
+                                    name='role'
+                                >
+                                    {roleOptions.map((option) => (
+                                        <li key={option} className='submenu-item' value={option}>
+                                            {option}
+                                        </li>))}
+                                </DropDownOption>
                             </div>
                             <div className="col-12 col-md-6 wrap">
-                                <span className="error">{formData.positionName.errMsg}</span>
+                                {/* <span className="error">{formData.positionName.errMsg}</span> */}
                                 <label className="form-label">Position</label>
-                                <div 
-                                     className="select-dropdown-wrapper"
-                                     style={{border:formData.positionName.errMsg ? '1px solid #f00' : ''}}
-                                     onClick={() => setPositionToggle(!positionToggle)}>
-                                    <span>{`${formData.positionName.value ? formData.positionName.value : 'Select'}`}</span>
-                                    <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                                    {positionToggle && <DropDownOption requiredDropdown="position" getSelectedOption={getSelectedOption} options={positionOption} />}
-                                </div>
+                                <DropDownOption
+                                    onClick={handleDropDownSelected}
+                                    dropDownSelected={dropDownSelected.position}
+                                    options={positionOptions}
+                                    name='position'
+                                >
+                                    {positionOptions.map((option) => (
+                                        <li key={option} className='submenu-item' value={option}>
+                                            {option}
+                                        </li>))}
+                                </DropDownOption>
                             </div>
                         </div>
                     </div>
@@ -260,13 +295,17 @@ const FormModal = ({
                             <div className="col-6 wrap">
                                 {/* <span className="error">hello</span> */}
                                 <label className="form-label">Direct Manger</label>
-                                <div 
-                                    className="select-dropdown-wrapper" 
-                                    onClick={() => setDirectManagerToggle(!directManagerToggle)}>
-                                    <span>{`${formData.directManagerName.value ? formData.directManagerName.value : 'Select'}`}</span>
-                                    <i className="fa-solid fa-chevron-down icon-chevron"></i>
-                                    {directManagerToggle && <DropDownOption requiredDropdown="directmanager" getSelectedOption={getSelectedOption} options={directManagerOption} />}
-                                </div>
+                                <DropDownOption
+                                    onClick={handleDropDownSelected}
+                                    dropDownSelected={dropDownSelected.directManager}
+                                    options={directMnagerOptions}
+                                    name='directManager'
+                                >
+                                    {directMnagerOptions.map((option) => (
+                                        <li key={option} className='submenu-item' value={option}>
+                                            {option}
+                                        </li>))}
+                                </DropDownOption>
                             </div>
                         </div>
                     </div>
@@ -282,13 +321,8 @@ const FormModal = ({
                     </div>
 
                     <div className="btn-wrapper">
-                        <button className="btn btn-close-form" onClick={(e)=>onCloseFormModel(e)}>Cancel</button>
-                        {
-                            !editEmployee ?
-                            (<button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Save</button>)
-                             :
-                             (<button className="btn btn-save" onClick={(e) => onSubmitData(e)}>Edit</button>)
-                        }
+                        <button className="btn btn-close-form" onClick={(e) => onCloseFormModel(e)}>Cancel</button>
+                        <button className="btn btn-save">Save</button>
                     </div>
                 </div>
 

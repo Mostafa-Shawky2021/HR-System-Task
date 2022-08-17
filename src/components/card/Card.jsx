@@ -39,9 +39,13 @@ const Card = (
                         <img src="/assets/header/useravatar.png" alt="employee-avatar" className="employee-avatar img-fluid" />
                     </div>
                     <div className="control d-flex align-items-center">
-                        <button className='control-icon' onClick={()=>onEditEmployee(id)}><i className="fa-solid fa-pen icon"></i></button>
+                        <button className='control-icon'><i className="fa-solid fa-pen icon"></i></button>
                         <button className='control-icon'><i className="fa-solid fa-pause icon"></i></button>
-                        <button className='control-icon icon-trash' onClick={() => onDeleteEmployee(id)}><i className="fa-solid fa-trash-can icon"></i></button>
+                        <button
+                            className='control-icon icon-trash'
+                            onClick={() => onDeleteEmployee(id)}>
+                            <i className="fa-solid fa-trash-can icon"></i>
+                        </button>
                     </div>
                 </div>
 
